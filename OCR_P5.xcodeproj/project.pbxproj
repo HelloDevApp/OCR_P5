@@ -54,14 +54,39 @@
 		52411FA52145BC2A006B245A /* OCR_P5 */ = {
 			isa = PBXGroup;
 			children = (
-				52411FA62145BC2A006B245A /* AppDelegate.swift */,
-				52411FA82145BC2A006B245A /* ViewController.swift */,
-				52411FAA2145BC2A006B245A /* Main.storyboard */,
+				52411FBB2145C02F006B245A /* Model */,
+				52411FBA2145C02B006B245A /* View */,
+				52411FBD2145C0AD006B245A /* Controller */,
 				52411FAD2145BC2B006B245A /* Assets.xcassets */,
 				52411FAF2145BC2B006B245A /* LaunchScreen.storyboard */,
 				52411FB22145BC2B006B245A /* Info.plist */,
 			);
 			path = OCR_P5;
+			sourceTree = "<group>";
+		};
+		52411FBA2145C02B006B245A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				52411FAA2145BC2A006B245A /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		52411FBB2145C02F006B245A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				52411FA62145BC2A006B245A /* AppDelegate.swift */,
+			);
+			name = Model;
+			path = "New Group/Model";
+			sourceTree = "<group>";
+		};
+		52411FBD2145C0AD006B245A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				52411FA82145BC2A006B245A /* ViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
