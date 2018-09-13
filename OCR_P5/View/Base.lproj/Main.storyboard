@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina4_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -10,21 +10,29 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Delm-Medium.otf">
+            <string>Delm-Medium</string>
+        </array>
+        <array key="ThirstySoftRegular.otf">
+            <string>ThirstySoftRegular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="OCR_P5" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe up to share" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="ZdV-gg-oxF">
-                                <rect key="frame" x="83.5" y="148" width="208.5" height="30"/>
+                                <rect key="frame" x="9" y="194.5" width="176" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="jCr-rx-PAN"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="26"/>
+                                <fontDescription key="fontDescription" name="Delm-Medium" family="Delm" pointSize="26"/>
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
@@ -39,11 +47,11 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagrid" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="cvw-zt-J6Y">
-                                <rect key="frame" x="130" y="30" width="115.5" height="34.5"/>
+                                <rect key="frame" x="287" y="11" width="118.5" height="39"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="39" id="y6q-Sy-sE0"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="30"/>
+                                <fontDescription key="fontDescription" name="ThirstySoftRegular" family="Thirsty Soft" pointSize="30"/>
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
@@ -58,7 +66,7 @@
                                 </variation>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imageView:sd1-Ds-Tv5:image" translatesAutoresizingMaskIntoConstraints="NO" id="sd1-Ds-Tv5">
-                                <rect key="frame" x="180" y="138" width="15" height="10"/>
+                                <rect key="frame" x="89.5" y="184.5" width="15" height="10"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="15" id="PIX-Pm-qOC"/>
                                     <constraint firstAttribute="height" constant="10" id="U91-7Z-nSt"/>
@@ -66,7 +74,7 @@
                                 <variation key="heightClass=compact" image="slanting-hook"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="QK1-ut-jTT" userLabel="Layout Button Stack View">
-                                <rect key="frame" x="37" y="556" width="301" height="80"/>
+                                <rect key="frame" x="545" y="59" width="80" height="300"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EEi-7g-jhm" userLabel="Layout Button 1">
                                         <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
@@ -76,14 +84,14 @@
                                         <state key="normal" backgroundImage="Layout 1"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kMr-4f-ffe" userLabel="Layout Button 2">
-                                        <rect key="frame" x="110.5" y="0.0" width="80" height="80"/>
+                                        <rect key="frame" x="0.0" y="110" width="80" height="80"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="kMr-4f-ffe" secondAttribute="height" multiplier="1:1" id="P7e-m1-76Y"/>
                                         </constraints>
                                         <state key="normal" image="Selected" backgroundImage="Layout 2"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l9K-n7-yzq" userLabel="Layout Button 3">
-                                        <rect key="frame" x="221" y="0.0" width="80" height="80"/>
+                                        <rect key="frame" x="0.0" y="220" width="80" height="80"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="l9K-n7-yzq" secondAttribute="height" multiplier="1:1" id="nwr-ro-iv3"/>
                                         </constraints>
@@ -93,13 +101,13 @@
                                 <variation key="heightClass=compact" alignment="fill" axis="vertical" distribution="fillEqually"/>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vgN-E7-cL2" userLabel="Square View M">
-                                <rect key="frame" x="37" y="183" width="301" height="301"/>
+                                <rect key="frame" x="196" y="59" width="300" height="300"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Yeb-Eh-5Cy" userLabel="Rectangular Stack View">
-                                        <rect key="frame" x="15" y="158.5" width="271" height="127.5"/>
+                                        <rect key="frame" x="15" y="158" width="270" height="127"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lqg-mG-HEN" userLabel="Rectangular View">
-                                                <rect key="frame" x="0.0" y="0.0" width="271" height="127.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="270" height="127"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iGh-37-EGY">
                                                         <rect key="frame" x="111.5" y="39.5" width="48" height="48"/>
@@ -118,13 +126,13 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="ity-0b-af0" userLabel="Square Stack View">
-                                        <rect key="frame" x="15" y="15" width="271" height="128"/>
+                                        <rect key="frame" x="15" y="15" width="270" height="127.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N8L-AK-dZT" userLabel="Square L View">
-                                                <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="127.5" height="127.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M2x-kC-xcO" userLabel="Combined Shape L Button">
-                                                        <rect key="frame" x="40" y="40" width="48" height="48"/>
+                                                        <rect key="frame" x="40" y="39.5" width="48" height="48"/>
                                                         <state key="normal" image="Combined Shape"/>
                                                     </button>
                                                 </subviews>
@@ -136,10 +144,10 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UiJ-9a-iWy" userLabel="Square R View">
-                                                <rect key="frame" x="143" y="0.0" width="128" height="128"/>
+                                                <rect key="frame" x="142.5" y="0.0" width="127.5" height="127.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="211-92-gTm" userLabel="Combined Shape R Button">
-                                                        <rect key="frame" x="40" y="40" width="48" height="48"/>
+                                                        <rect key="frame" x="40.5" y="39.5" width="48" height="48"/>
                                                         <state key="normal" backgroundImage="Combined Shape"/>
                                                     </button>
                                                 </subviews>
@@ -209,6 +217,7 @@
                                 <exclude reference="3HD-UB-dLk"/>
                                 <exclude reference="471-cA-haF"/>
                                 <exclude reference="Dtl-FR-ktB"/>
+                                <exclude reference="5Pi-hm-ya9"/>
                                 <exclude reference="Znn-vb-gDj"/>
                                 <exclude reference="d9D-hc-2tI"/>
                                 <exclude reference="xPv-de-W6i"/>
@@ -217,7 +226,6 @@
                                 <exclude reference="D8Z-R3-ubT"/>
                                 <exclude reference="rbg-xV-kId"/>
                                 <exclude reference="zHe-df-g8x"/>
-                                <exclude reference="5Pi-hm-ya9"/>
                                 <exclude reference="SiS-hd-h9I"/>
                                 <exclude reference="lhz-cX-T9B"/>
                                 <exclude reference="wMJ-qL-uNi"/>
@@ -230,7 +238,9 @@
                                 <exclude reference="7NJ-dv-wTx"/>
                                 <include reference="Dtl-FR-ktB"/>
                                 <exclude reference="zGF-I1-WTT"/>
-                                <exclude reference="CVN-Fc-xUK"/>
+                                <include reference="5Pi-hm-ya9"/>
+                                <exclude reference="7x4-qc-bpz"/>
+                                <exclude reference="vds-Qh-LcX"/>
                                 <exclude reference="2km-eA-JGS"/>
                                 <exclude reference="8A3-xa-elW"/>
                                 <exclude reference="XDe-P8-lbv"/>
@@ -246,9 +256,7 @@
                                 <exclude reference="zGJ-NJ-0Gv"/>
                                 <include reference="zHe-df-g8x"/>
                                 <exclude reference="zZg-8b-rbL"/>
-                                <include reference="5Pi-hm-ya9"/>
-                                <exclude reference="7x4-qc-bpz"/>
-                                <exclude reference="vds-Qh-LcX"/>
+                                <exclude reference="CVN-Fc-xUK"/>
                                 <exclude reference="2Sz-lC-P8L"/>
                                 <exclude reference="KiI-XM-n8H"/>
                                 <exclude reference="Kkg-6m-33u"/>
