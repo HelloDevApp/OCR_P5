@@ -108,12 +108,16 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vgN-E7-cL2" userLabel="Square View M">
                                 <rect key="frame" x="37" y="183" width="301" height="301"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="ity-0b-af0" userLabel="Square Stack View">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="ity-0b-af0" userLabel="Square Stack View 1">
                                         <rect key="frame" x="15" y="15" width="271" height="128.5"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N8L-AK-dZT" userLabel="Square L View">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N8L-AK-dZT" userLabel="Square L View 1">
                                                 <rect key="frame" x="0.0" y="0.0" width="128" height="128.5"/>
                                                 <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GzX-DU-KgZ">
+                                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    </imageView>
                                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M2x-kC-xcO" userLabel="Combined Shape L Button">
                                                         <rect key="frame" x="40.5" y="40.5" width="48" height="48"/>
                                                         <state key="normal" image="Combined Shape"/>
@@ -126,9 +130,13 @@
                                                     <constraint firstItem="M2x-kC-xcO" firstAttribute="centerY" secondItem="N8L-AK-dZT" secondAttribute="centerY" id="rTG-yb-xMk"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UiJ-9a-iWy" userLabel="Square R View">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UiJ-9a-iWy" userLabel="Square R View 1">
                                                 <rect key="frame" x="143" y="0.0" width="128" height="128.5"/>
                                                 <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jRk-yI-n8S">
+                                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    </imageView>
                                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="211-92-gTm" userLabel="Combined Shape R Button">
                                                         <rect key="frame" x="40" y="40.5" width="48" height="48"/>
                                                         <state key="normal" backgroundImage="Combined Shape"/>
@@ -145,12 +153,16 @@
                                             <constraint firstItem="UiJ-9a-iWy" firstAttribute="height" secondItem="N8L-AK-dZT" secondAttribute="height" id="29f-4l-cXR"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="8Lv-Cn-7JQ" userLabel="Square Stack View">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="8Lv-Cn-7JQ" userLabel="Square Stack View 2">
                                         <rect key="frame" x="15" y="158.5" width="271" height="128"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D5K-DC-prF" userLabel="Square L View">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D5K-DC-prF" userLabel="Square L View 2">
                                                 <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                 <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nou-1D-jw4">
+                                                        <rect key="frame" x="0.0" y="-0.5" width="128" height="128"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    </imageView>
                                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dXF-39-SWa" userLabel="Combined Shape L Button">
                                                         <rect key="frame" x="40.5" y="40" width="48" height="48"/>
                                                         <state key="normal" image="Combined Shape"/>
@@ -163,9 +175,13 @@
                                                     <constraint firstItem="dXF-39-SWa" firstAttribute="centerX" secondItem="D5K-DC-prF" secondAttribute="centerX" id="swY-Xu-gA6"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9pe-Ky-VaG" userLabel="Square R View">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9pe-Ky-VaG" userLabel="Square R View 2">
                                                 <rect key="frame" x="143" y="0.0" width="128" height="128"/>
                                                 <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WEJ-Sd-ol3">
+                                                        <rect key="frame" x="0.0" y="-0.5" width="128" height="128"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    </imageView>
                                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S6Z-TJ-4eG" userLabel="Combined Shape R Button">
                                                         <rect key="frame" x="40" y="40" width="48" height="48"/>
                                                         <state key="normal" backgroundImage="Combined Shape"/>
@@ -288,25 +304,25 @@
                             <mask key="constraints">
                                 <exclude reference="EAf-Ou-gp4"/>
                                 <exclude reference="L20-HO-6cA"/>
-                                <exclude reference="lPp-Ok-vN2"/>
-                                <exclude reference="sa0-mx-4eM"/>
                                 <exclude reference="3HD-UB-dLk"/>
                                 <exclude reference="471-cA-haF"/>
                                 <exclude reference="Dtl-FR-ktB"/>
+                                <exclude reference="5Pi-hm-ya9"/>
+                                <exclude reference="Znn-vb-gDj"/>
+                                <exclude reference="d9D-hc-2tI"/>
+                                <exclude reference="xPv-de-W6i"/>
+                                <exclude reference="yI8-CG-n6f"/>
                                 <exclude reference="2GA-yh-ron"/>
                                 <exclude reference="B8h-DF-mGh"/>
                                 <exclude reference="D8Z-R3-ubT"/>
                                 <exclude reference="ghY-nU-32v"/>
                                 <exclude reference="rbg-xV-kId"/>
                                 <exclude reference="zHe-df-g8x"/>
-                                <exclude reference="Znn-vb-gDj"/>
-                                <exclude reference="d9D-hc-2tI"/>
-                                <exclude reference="xPv-de-W6i"/>
-                                <exclude reference="yI8-CG-n6f"/>
-                                <exclude reference="5Pi-hm-ya9"/>
                                 <exclude reference="SiS-hd-h9I"/>
                                 <exclude reference="lhz-cX-T9B"/>
                                 <exclude reference="wMJ-qL-uNi"/>
+                                <exclude reference="lPp-Ok-vN2"/>
+                                <exclude reference="sa0-mx-4eM"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact">
@@ -319,12 +335,21 @@
                             <mask key="constraints">
                                 <include reference="EAf-Ou-gp4"/>
                                 <include reference="L20-HO-6cA"/>
-                                <include reference="sa0-mx-4eM"/>
                                 <exclude reference="3HD-UB-dLk"/>
                                 <include reference="471-cA-haF"/>
                                 <exclude reference="7NJ-dv-wTx"/>
                                 <include reference="Dtl-FR-ktB"/>
                                 <exclude reference="zGF-I1-WTT"/>
+                                <include reference="5Pi-hm-ya9"/>
+                                <exclude reference="7x4-qc-bpz"/>
+                                <exclude reference="vds-Qh-LcX"/>
+                                <exclude reference="2km-eA-JGS"/>
+                                <exclude reference="8A3-xa-elW"/>
+                                <exclude reference="XDe-P8-lbv"/>
+                                <exclude reference="Znn-vb-gDj"/>
+                                <exclude reference="d9D-hc-2tI"/>
+                                <exclude reference="xPv-de-W6i"/>
+                                <exclude reference="yI8-CG-n6f"/>
                                 <include reference="2GA-yh-ron"/>
                                 <include reference="B8h-DF-mGh"/>
                                 <include reference="D8Z-R3-ubT"/>
@@ -334,31 +359,22 @@
                                 <exclude reference="zGJ-NJ-0Gv"/>
                                 <exclude reference="zHe-df-g8x"/>
                                 <exclude reference="zZg-8b-rbL"/>
-                                <exclude reference="2km-eA-JGS"/>
-                                <exclude reference="8A3-xa-elW"/>
-                                <exclude reference="XDe-P8-lbv"/>
-                                <exclude reference="Znn-vb-gDj"/>
-                                <exclude reference="d9D-hc-2tI"/>
-                                <exclude reference="xPv-de-W6i"/>
-                                <exclude reference="yI8-CG-n6f"/>
-                                <exclude reference="CVN-Fc-xUK"/>
-                                <include reference="5Pi-hm-ya9"/>
-                                <exclude reference="7x4-qc-bpz"/>
-                                <exclude reference="vds-Qh-LcX"/>
-                                <exclude reference="2Sz-lC-P8L"/>
-                                <exclude reference="KiI-XM-n8H"/>
                                 <exclude reference="Kkg-6m-33u"/>
                                 <exclude reference="LSc-Jl-48h"/>
                                 <include reference="SiS-hd-h9I"/>
                                 <include reference="lhz-cX-T9B"/>
                                 <include reference="wMJ-qL-uNi"/>
+                                <include reference="sa0-mx-4eM"/>
+                                <exclude reference="CVN-Fc-xUK"/>
+                                <exclude reference="2Sz-lC-P8L"/>
+                                <exclude reference="KiI-XM-n8H"/>
                             </mask>
                         </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.28185907046478" y="132"/>
+            <point key="canvasLocation" x="135.19999999999999" y="131.78410794602701"/>
         </scene>
     </scenes>
     <resources>
