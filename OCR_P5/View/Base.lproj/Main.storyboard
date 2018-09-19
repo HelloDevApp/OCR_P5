@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.3.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -105,21 +104,21 @@
                                 </subviews>
                                 <variation key="heightClass=compact" alignment="center" axis="vertical" distribution="fillEqually"/>
                             </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vgN-E7-cL2" userLabel="Square View M">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vgN-E7-cL2" userLabel="Square View M" customClass="LayoutCustomView" customModule="OCR_P5" customModuleProvider="target">
                                 <rect key="frame" x="37" y="183" width="301" height="301"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="ity-0b-af0" userLabel="Square Stack View 1">
-                                        <rect key="frame" x="15" y="15" width="271" height="128.5"/>
+                                        <rect key="frame" x="15" y="15" width="271" height="128"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N8L-AK-dZT" userLabel="Square L View 1">
-                                                <rect key="frame" x="0.0" y="0.0" width="128" height="128.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GzX-DU-KgZ">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GzX-DU-KgZ" userLabel="Image View L1">
                                                         <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     </imageView>
                                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M2x-kC-xcO" userLabel="Combined Shape L Button">
-                                                        <rect key="frame" x="40.5" y="40.5" width="48" height="48"/>
+                                                        <rect key="frame" x="40" y="40" width="48" height="48"/>
                                                         <state key="normal" image="Combined Shape"/>
                                                     </button>
                                                 </subviews>
@@ -131,14 +130,14 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UiJ-9a-iWy" userLabel="Square R View 1">
-                                                <rect key="frame" x="143" y="0.0" width="128" height="128.5"/>
+                                                <rect key="frame" x="143" y="0.0" width="128" height="128"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jRk-yI-n8S">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jRk-yI-n8S" userLabel="Image View R1">
                                                         <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     </imageView>
                                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="211-92-gTm" userLabel="Combined Shape R Button">
-                                                        <rect key="frame" x="40" y="40.5" width="48" height="48"/>
+                                                        <rect key="frame" x="40" y="40" width="48" height="48"/>
                                                         <state key="normal" backgroundImage="Combined Shape"/>
                                                     </button>
                                                 </subviews>
@@ -154,17 +153,17 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="8Lv-Cn-7JQ" userLabel="Square Stack View 2">
-                                        <rect key="frame" x="15" y="158.5" width="271" height="128"/>
+                                        <rect key="frame" x="15" y="158" width="271" height="128"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D5K-DC-prF" userLabel="Square L View 2">
                                                 <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nou-1D-jw4">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nou-1D-jw4" userLabel="Image View L2">
                                                         <rect key="frame" x="0.0" y="-0.5" width="128" height="128"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     </imageView>
                                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dXF-39-SWa" userLabel="Combined Shape L Button">
-                                                        <rect key="frame" x="40.5" y="40" width="48" height="48"/>
+                                                        <rect key="frame" x="40" y="40" width="48" height="48"/>
                                                         <state key="normal" image="Combined Shape"/>
                                                     </button>
                                                 </subviews>
@@ -178,7 +177,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9pe-Ky-VaG" userLabel="Square R View 2">
                                                 <rect key="frame" x="143" y="0.0" width="128" height="128"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WEJ-Sd-ol3">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WEJ-Sd-ol3" userLabel="Image View R2">
                                                         <rect key="frame" x="0.0" y="-0.5" width="128" height="128"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     </imageView>
@@ -211,6 +210,16 @@
                                     <constraint firstItem="8Lv-Cn-7JQ" firstAttribute="width" secondItem="ity-0b-af0" secondAttribute="width" id="xMn-pH-Glv"/>
                                     <constraint firstAttribute="width" secondItem="vgN-E7-cL2" secondAttribute="height" multiplier="1:1" id="ypa-Wi-4by"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="imageViewL1" destination="GzX-DU-KgZ" id="0XO-GU-XsX"/>
+                                    <outlet property="imageViewL2" destination="nou-1D-jw4" id="4m4-ns-uzd"/>
+                                    <outlet property="imageViewR1" destination="jRk-yI-n8S" id="Bki-HK-M09"/>
+                                    <outlet property="imageViewR2" destination="WEJ-Sd-ol3" id="OE3-YI-Mz6"/>
+                                    <outlet property="squareViewL1" destination="N8L-AK-dZT" id="1kI-UC-pjk"/>
+                                    <outlet property="squareViewL2" destination="D5K-DC-prF" id="OWZ-Pf-t2g"/>
+                                    <outlet property="squareViewR1" destination="UiJ-9a-iWy" id="oXn-96-qoF"/>
+                                    <outlet property="squareViewR2" destination="9pe-Ky-VaG" id="zLS-q6-iD1"/>
+                                </connections>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe left to share" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="Tdw-ff-TyU">
                                 <rect key="frame" x="9" y="194.5" width="171" height="29"/>
