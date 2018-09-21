@@ -126,26 +126,11 @@ class ViewController: UIViewController {
             
             
         case .rectangularBottomView:
-
-            squareViewR2.isHidden = true
-            imageViewR2.isHidden = true
-            squareViewR1.isHidden = false
-            imageViewR1.isHidden = false
-  
+            chooseLayout(layoutStyle: .rectangularBottomView)
         case .rectangularTopView:
-
-            squareViewR1.isHidden = true
-            imageViewR1.isHidden = true
-            squareViewR2.isHidden = false
-            imageViewR2.isHidden = false
-            
+            chooseLayout(layoutStyle: .rectangularTopView)
         case .squareView:
-
-            squareViewR1.isHidden = false
-            imageViewR1.isHidden = false
-            squareViewR2.isHidden = false
-            imageViewR2.isHidden = false
-            
+            chooseLayout(layoutStyle: .squareView)
         }
     }
     func disabledButton(disabled: UIButton, enabled1: UIButton, enabled2: UIButton) {
@@ -154,6 +139,25 @@ class ViewController: UIViewController {
         enabled1.isEnabled = true
         enabled2.isEnabled = true
         
+    }
+    func chooseLayout(layoutStyle: Layout) {
+        switch layoutStyle {
+        case .rectangularBottomView:
+            squareViewR2.isHidden = true
+            imageViewR2.isHidden = true
+            squareViewR1.isHidden = false
+            imageViewR1.isHidden = false
+        case .rectangularTopView:
+            squareViewR1.isHidden = true
+            imageViewR1.isHidden = true
+            squareViewR2.isHidden = false
+            imageViewR2.isHidden = false
+        case .squareView:
+            squareViewR1.isHidden = false
+            imageViewR1.isHidden = false
+            squareViewR2.isHidden = false
+            imageViewR2.isHidden = false
+        }
     }
 }
 
