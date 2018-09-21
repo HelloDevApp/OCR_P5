@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="landscape">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -23,7 +23,7 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="OCR_P5" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe up to share" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="ZdV-gg-oxF">
@@ -46,7 +46,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagrid" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="cvw-zt-J6Y">
-                                <rect key="frame" x="282" y="11" width="118.5" height="39"/>
+                                <rect key="frame" x="128.5" y="30" width="118.5" height="39"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="39" id="y6q-Sy-sE0"/>
                                 </constraints>
@@ -78,10 +78,10 @@
                                 <variation key="heightClass=compact" image="slanting hook right"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="QK1-ut-jTT" userLabel="Layout Button Stack View">
-                                <rect key="frame" x="540" y="59" width="85" height="300"/>
+                                <rect key="frame" x="37" y="556" width="301" height="80"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EEi-7g-jhm" userLabel="Layout Button 1">
-                                        <rect key="frame" x="2.5" y="0.0" width="80" height="80"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="EEi-7g-jhm" secondAttribute="height" multiplier="1:1" id="IoU-gX-7nB"/>
                                         </constraints>
@@ -91,7 +91,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kMr-4f-ffe" userLabel="Layout Button 2">
-                                        <rect key="frame" x="2.5" y="110" width="80" height="80"/>
+                                        <rect key="frame" x="110.5" y="0.0" width="80" height="80"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="kMr-4f-ffe" secondAttribute="height" multiplier="1:1" id="P7e-m1-76Y"/>
                                         </constraints>
@@ -101,30 +101,29 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l9K-n7-yzq" userLabel="Layout Button 3">
-                                        <rect key="frame" x="2.5" y="220" width="80" height="80"/>
+                                        <rect key="frame" x="221" y="0.0" width="80" height="80"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="l9K-n7-yzq" secondAttribute="height" multiplier="1:1" id="nwr-ro-iv3"/>
                                         </constraints>
                                         <state key="normal" backgroundImage="Layout 3"/>
                                         <connections>
-                                            <action selector="layoutButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fyc-Mc-6mn"/>
+                                            <action selector="layoutButton3Tapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5Nv-It-faL"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <variation key="heightClass=compact" alignment="center" axis="vertical" distribution="fillEqually"/>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vgN-E7-cL2" userLabel="Square View M">
-                                <rect key="frame" x="191" y="59" width="300" height="300"/>
+                                <rect key="frame" x="37" y="183" width="301" height="301"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="ity-0b-af0" userLabel="Square Stack View 1">
-                                        <rect key="frame" x="15" y="15" width="270" height="127.5"/>
+                                        <rect key="frame" x="15" y="15" width="271" height="128"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N8L-AK-dZT" userLabel="Square L View 1">
-                                                <rect key="frame" x="0.0" y="0.0" width="127.5" height="127.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GzX-DU-KgZ" userLabel="Image View L1">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GzX-DU-KgZ" userLabel="Image View L1">
                                                         <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     </imageView>
                                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M2x-kC-xcO" userLabel="Combined Shape L Button">
                                                         <rect key="frame" x="40" y="40" width="48" height="48"/>
@@ -133,17 +132,20 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="GzX-DU-KgZ" secondAttribute="trailing" id="1Ph-5J-GgY"/>
+                                                    <constraint firstItem="GzX-DU-KgZ" firstAttribute="top" secondItem="N8L-AK-dZT" secondAttribute="top" id="4CY-Sr-aOT"/>
                                                     <constraint firstAttribute="width" secondItem="N8L-AK-dZT" secondAttribute="height" multiplier="1:1" id="4Im-5A-Wre"/>
+                                                    <constraint firstItem="GzX-DU-KgZ" firstAttribute="leading" secondItem="N8L-AK-dZT" secondAttribute="leading" id="LBK-qU-0YY"/>
+                                                    <constraint firstAttribute="bottom" secondItem="GzX-DU-KgZ" secondAttribute="bottom" id="Std-Sd-lXw"/>
                                                     <constraint firstItem="M2x-kC-xcO" firstAttribute="centerX" secondItem="N8L-AK-dZT" secondAttribute="centerX" id="YdQ-kh-5wt"/>
                                                     <constraint firstItem="M2x-kC-xcO" firstAttribute="centerY" secondItem="N8L-AK-dZT" secondAttribute="centerY" id="rTG-yb-xMk"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UiJ-9a-iWy" userLabel="Square R View 1">
-                                                <rect key="frame" x="142.5" y="0.0" width="127.5" height="127.5"/>
+                                                <rect key="frame" x="143" y="0.0" width="128" height="128"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jRk-yI-n8S" userLabel="Image View R1">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jRk-yI-n8S" userLabel="Image View R1">
                                                         <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     </imageView>
                                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="211-92-gTm" userLabel="Combined Shape R Button">
                                                         <rect key="frame" x="40" y="40" width="48" height="48"/>
@@ -152,24 +154,28 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="jRk-yI-n8S" secondAttribute="trailing" id="8aw-fp-8SC"/>
                                                     <constraint firstItem="211-92-gTm" firstAttribute="centerX" secondItem="UiJ-9a-iWy" secondAttribute="centerX" id="9lI-TI-CgE"/>
+                                                    <constraint firstItem="jRk-yI-n8S" firstAttribute="top" secondItem="UiJ-9a-iWy" secondAttribute="top" id="BDr-65-cGV"/>
+                                                    <constraint firstItem="jRk-yI-n8S" firstAttribute="leading" secondItem="UiJ-9a-iWy" secondAttribute="leading" id="Ghw-5w-mB2"/>
+                                                    <constraint firstAttribute="bottom" secondItem="jRk-yI-n8S" secondAttribute="bottom" id="OGB-fF-W6q"/>
                                                     <constraint firstItem="211-92-gTm" firstAttribute="centerY" secondItem="UiJ-9a-iWy" secondAttribute="centerY" id="aGz-rI-tVh"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="UiJ-9a-iWy" firstAttribute="height" secondItem="N8L-AK-dZT" secondAttribute="height" id="29f-4l-cXR"/>
+                                            <constraint firstAttribute="width" secondItem="ity-0b-af0" secondAttribute="height" multiplier="271:128" id="S1q-HD-TDY"/>
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="8Lv-Cn-7JQ" userLabel="Square Stack View 2">
-                                        <rect key="frame" x="15" y="157.5" width="270" height="127.5"/>
+                                        <rect key="frame" x="15" y="158" width="271" height="128"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D5K-DC-prF" userLabel="Square L View 2">
-                                                <rect key="frame" x="0.0" y="0.0" width="127.5" height="127.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nou-1D-jw4" userLabel="Image View L2">
-                                                        <rect key="frame" x="0.0" y="-0.5" width="128" height="128"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nou-1D-jw4" userLabel="Image View L2">
+                                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                     </imageView>
                                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dXF-39-SWa" userLabel="Combined Shape L Button">
                                                         <rect key="frame" x="40" y="40" width="48" height="48"/>
@@ -178,17 +184,20 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
+                                                    <constraint firstItem="nou-1D-jw4" firstAttribute="top" secondItem="D5K-DC-prF" secondAttribute="top" id="0Kl-uZ-kSx"/>
+                                                    <constraint firstAttribute="bottom" secondItem="nou-1D-jw4" secondAttribute="bottom" id="AlT-gt-v9B"/>
+                                                    <constraint firstAttribute="trailing" secondItem="nou-1D-jw4" secondAttribute="trailing" id="DFf-QN-HSq"/>
                                                     <constraint firstAttribute="width" secondItem="D5K-DC-prF" secondAttribute="height" multiplier="1:1" id="JNd-0U-rdK"/>
                                                     <constraint firstItem="dXF-39-SWa" firstAttribute="centerY" secondItem="D5K-DC-prF" secondAttribute="centerY" id="K1N-zC-bxp"/>
+                                                    <constraint firstItem="nou-1D-jw4" firstAttribute="leading" secondItem="D5K-DC-prF" secondAttribute="leading" id="UzK-BH-vDQ"/>
                                                     <constraint firstItem="dXF-39-SWa" firstAttribute="centerX" secondItem="D5K-DC-prF" secondAttribute="centerX" id="swY-Xu-gA6"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9pe-Ky-VaG" userLabel="Square R View 2">
-                                                <rect key="frame" x="142.5" y="0.0" width="127.5" height="127.5"/>
+                                                <rect key="frame" x="143" y="0.0" width="128" height="128"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WEJ-Sd-ol3" userLabel="Image View R2">
-                                                        <rect key="frame" x="0.0" y="-0.5" width="128" height="128"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WEJ-Sd-ol3" userLabel="Image View R2">
+                                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                     </imageView>
                                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S6Z-TJ-4eG" userLabel="Combined Shape R Button">
                                                         <rect key="frame" x="40" y="40" width="48" height="48"/>
@@ -197,12 +206,17 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="WEJ-Sd-ol3" secondAttribute="bottom" id="6hD-EW-0B0"/>
+                                                    <constraint firstItem="WEJ-Sd-ol3" firstAttribute="leading" secondItem="9pe-Ky-VaG" secondAttribute="leading" id="De6-cU-deY"/>
+                                                    <constraint firstAttribute="trailing" secondItem="WEJ-Sd-ol3" secondAttribute="trailing" id="b8f-Ds-HKM"/>
                                                     <constraint firstItem="S6Z-TJ-4eG" firstAttribute="centerX" secondItem="9pe-Ky-VaG" secondAttribute="centerX" id="msI-VZ-0W0"/>
+                                                    <constraint firstItem="WEJ-Sd-ol3" firstAttribute="top" secondItem="9pe-Ky-VaG" secondAttribute="top" id="obY-qx-IEl"/>
                                                     <constraint firstItem="S6Z-TJ-4eG" firstAttribute="centerY" secondItem="9pe-Ky-VaG" secondAttribute="centerY" id="v8B-Ng-kc6"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
                                         <constraints>
+                                            <constraint firstAttribute="width" secondItem="8Lv-Cn-7JQ" secondAttribute="height" multiplier="271:128" id="1T6-kl-kOl"/>
                                             <constraint firstItem="9pe-Ky-VaG" firstAttribute="height" secondItem="D5K-DC-prF" secondAttribute="height" id="nMd-CI-O6N"/>
                                         </constraints>
                                     </stackView>
@@ -384,8 +398,13 @@
                         <outlet property="imageViewL1" destination="GzX-DU-KgZ" id="sml-1e-JZ7"/>
                         <outlet property="imageViewR1" destination="jRk-yI-n8S" id="zu3-80-4fM"/>
                         <outlet property="imageViewR2" destination="WEJ-Sd-ol3" id="fr1-o8-L77"/>
-                        <outlet property="squareViewL1" destination="N8L-AK-dZT" id="Jj4-H8-lnZ"/>
+                        <outlet property="layoutButton1" destination="EEi-7g-jhm" id="Yy4-Cf-5yh"/>
+                        <outlet property="layoutButton2" destination="kMr-4f-ffe" id="TNj-fF-L92"/>
+                        <outlet property="layoutButton3" destination="l9K-n7-yzq" id="RQH-UG-te0"/>
+                        <outlet property="squareViewL1" destination="N8L-AK-dZT" id="Icb-zt-rMq"/>
+                        <outlet property="squareViewL1Ratio" destination="4Im-5A-Wre" id="01W-io-TDH"/>
                         <outlet property="squareViewL2" destination="D5K-DC-prF" id="Oc9-d9-CaE"/>
+                        <outlet property="squareViewL2Ratio" destination="JNd-0U-rdK" id="cm8-Be-JyS"/>
                         <outlet property="squareViewR1" destination="UiJ-9a-iWy" id="CRo-if-9el"/>
                         <outlet property="squareViewR2" destination="9pe-Ky-VaG" id="qwI-7W-Moj"/>
                         <outlet property="stackViewBottom" destination="8Lv-Cn-7JQ" id="qAY-oC-Gfn"/>
