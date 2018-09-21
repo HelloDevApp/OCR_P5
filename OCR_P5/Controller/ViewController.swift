@@ -100,18 +100,33 @@ class ViewController: UIViewController {
     
     //layoutButton is on the left in portrait mode ⚠️layoutButton is on the top in landscape mode⚠️
     @IBAction func layoutButton1Tapped(_ sender: UIButton) {
-        disabledButton(disabled: layoutButton1, enabled1: layoutButton2, enabled2: layoutButton3)
+        
+        //disabledButton(disabled: layoutButton1, enabled1: layoutButton2, enabled2: layoutButton3)
         displaysLayout(layoutStyle: .rectangularTopView)
+        layoutButton1.setImage(#imageLiteral(resourceName: "Selected"), for: .normal)
+        layoutButton2.setImage(nil, for: .normal)
+        layoutButton3.setImage(nil, for: .normal)
+
     }
     //center layoutButton in portrait and landscape mode
     @IBAction func layoutButton2Tapped(_ sender: UIButton) {
-        disabledButton(disabled: layoutButton2, enabled1: layoutButton1, enabled2: layoutButton3)
+        
+        //disabledButton(disabled: layoutButton2, enabled1: layoutButton1, enabled2: layoutButton3)
         displaysLayout(layoutStyle: .rectangularBottomView)
+        layoutButton2.setImage(#imageLiteral(resourceName: "Selected"), for: .normal)
+        layoutButton1.setImage(nil, for: .normal)
+        layoutButton3.setImage(nil, for: .normal)
+
     }
     //layoutButton is on the right in portrait mode ⚠️layoutButton is on the bottom in landscape mode⚠️
     @IBAction func layoutButton3Tapped(_ sender: UIButton) {
-        disabledButton(disabled: layoutButton3, enabled1: layoutButton1, enabled2: layoutButton2)
+        
+        //disabledButton(disabled: layoutButton3, enabled1: layoutButton1, enabled2: layoutButton2)
         displaysLayout(layoutStyle: .squareView)
+        layoutButton3.setImage(#imageLiteral(resourceName: "Selected"), for: .normal)
+        layoutButton1.setImage(nil, for: .normal)
+        layoutButton2.setImage(nil, for: .normal)
+
     }
     
     
