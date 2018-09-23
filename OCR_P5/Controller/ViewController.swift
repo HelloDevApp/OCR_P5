@@ -17,7 +17,6 @@ enum Layout {
     case squareView
 }
 
-
 class ViewController: UIViewController {
 
     //--------------------------------------------------
@@ -62,9 +61,7 @@ class ViewController: UIViewController {
     //--------------------------------------------------
     // MARK: - Properties
     //-------------------------------------------------
-    
-    
-    
+ 
     //--------------------------------------------------
     // MARK: - Constraints
     //-------------------------------------------------
@@ -90,10 +87,7 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
-    
-    
+
     //--------------------------------------------------
     // MARK: - Layout Buttons @IBAction
     //-------------------------------------------------
@@ -108,6 +102,7 @@ class ViewController: UIViewController {
         layoutButton3.setImage(nil, for: .normal)
 
     }
+    
     //center layoutButton in portrait and landscape mode
     @IBAction func layoutButton2Tapped(_ sender: UIButton) {
         
@@ -118,6 +113,7 @@ class ViewController: UIViewController {
         layoutButton3.setImage(nil, for: .normal)
 
     }
+    
     //layoutButton is on the right in portrait mode ⚠️layoutButton is on the bottom in landscape mode⚠️
     @IBAction func layoutButton3Tapped(_ sender: UIButton) {
         
@@ -129,49 +125,56 @@ class ViewController: UIViewController {
 
     }
     
-    
-    
     //-----------------------------------------------------
     // MARK: - Settings
     //-----------------------------------------------------
     
+    //method that displays the chosen layout style
     func displaysLayout(layoutStyle: Layout) {
         
         switch layoutStyle {
             
-            
         case .rectangularBottomView:
-            chooseLayout(layoutStyle: .rectangularBottomView)
+            currentLayout(layoutStyle: .rectangularBottomView)
         case .rectangularTopView:
-            chooseLayout(layoutStyle: .rectangularTopView)
+            currentLayout(layoutStyle: .rectangularTopView)
         case .squareView:
-            chooseLayout(layoutStyle: .squareView)
+            currentLayout(layoutStyle: .squareView)
+            
         }
     }
-    func disabledButton(disabled: UIButton, enabled1: UIButton, enabled2: UIButton) {
-        
+    
+    // disable a button after clicking it. this method is not used by default in the program
+    /*func disabledButton(disabled: UIButton, enabled1: UIButton, enabled2: UIButton) {
         disabled.isEnabled = false
         enabled1.isEnabled = true
         enabled2.isEnabled = true
-        
     }
-    func chooseLayout(layoutStyle: Layout) {
+    */
+    
+    //method which parameters the different layout style cases
+    func currentLayout(layoutStyle: Layout) {
+        
         switch layoutStyle {
+            
         case .rectangularBottomView:
             squareViewR2.isHidden = true
             imageViewR2.isHidden = true
             squareViewR1.isHidden = false
             imageViewR1.isHidden = false
+            
         case .rectangularTopView:
             squareViewR1.isHidden = true
             imageViewR1.isHidden = true
             squareViewR2.isHidden = false
             imageViewR2.isHidden = false
+            
         case .squareView:
             squareViewR1.isHidden = false
             imageViewR1.isHidden = false
             squareViewR2.isHidden = false
             imageViewR2.isHidden = false
+            
         }
     }
 }
