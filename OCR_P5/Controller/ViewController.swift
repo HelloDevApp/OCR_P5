@@ -94,6 +94,12 @@ class ViewController: UIViewController {
         squareViewL2Ratio.isActive = false
         displaysLayout(layoutStyle: .rectangularBottomView)
         
+        // ====================================
+        // MARK: Init Swipe Gesture
+        // ====================================
+        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(ViewController.upSwipe))
+        swipe.direction = .up
+        self.view.addGestureRecognizer(swipe)
     }
 
     override func didReceiveMemoryWarning() {
@@ -214,6 +220,12 @@ class ViewController: UIViewController {
             imageViewR2.isHidden = false
             
         }
+    }
+    // ====================================
+    // MARK - Swipe Gesture Method
+    // ====================================
+    @objc func upSwipe() {
+
     }
 }
     // ====================================
