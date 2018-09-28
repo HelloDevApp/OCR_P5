@@ -25,28 +25,36 @@ class ViewController: UIViewController {
     
     //Top StackView
     @IBOutlet weak var stackViewTop: UIStackView!
-    //Top Left squareView
     // ⚠️1 = Top    ⚠️2 = Bottom    ⚠️L = Left    ⚠️R = Right
+    //Top Left squareView
     @IBOutlet weak var squareViewL1: UIView!
     //Top Left imageView
     @IBOutlet weak var imageViewL1: UIImageView!
+    //Top Left Button
+    @IBOutlet weak var pickImageButtonL1: UIButton!
     //Top Right squareView
     @IBOutlet weak var squareViewR1: UIView!
     //Top Right squareView
     @IBOutlet weak var imageViewR1: UIImageView!
+    //Top Right button
+    @IBOutlet weak var pickImageButtonR1: UIButton!
     //--------------------------------------------------
     
     //Bottom StackView
     @IBOutlet weak var stackViewBottom: UIStackView!
-    //Bottom Left squareView
     // ⚠️1 = Top    ⚠️2 = Bottom    ⚠️L = Left    ⚠️R = Right
+    //Bottom Left squareView
     @IBOutlet weak var squareViewL2: UIView!
     //Bottom Left imageView
-    @IBOutlet weak var imageVieWL2: UIView!
+    @IBOutlet weak var imageViewL2: UIImageView!
+    //Bottom Left button
+    @IBOutlet weak var pickImageButtonL2: UIButton!
     //Bottom Right squareVIew
     @IBOutlet weak var squareViewR2: UIView!
     //Bottom Right imageView
-    @IBOutlet weak var imageViewR2: UIView!
+    @IBOutlet weak var imageViewR2: UIImageView!
+    //Bottom Right Button
+    @IBOutlet weak var pickImageButtonR2: UIButton!
     
     //--------------------------------------------------
     // MARK: - @IBOutlets: LayoutButton
@@ -58,7 +66,12 @@ class ViewController: UIViewController {
     @IBOutlet weak var layoutButton3: UIButton!
     
     
-    //--------------------------------------------------
+    //-------------------------------------------------
+    // MARK: - Instances
+    //-------------------------------------------------
+    var imagePickerController = UIImagePickerController()
+    
+    //-------------------------------------------------
     // MARK: - Properties
     //-------------------------------------------------
  
@@ -125,6 +138,31 @@ class ViewController: UIViewController {
 
     }
     
+    //--------------------------------------------------
+    // MARK: - Image Picker Buttons @IBAction
+    //-------------------------------------------------
+    
+    // method that manages the action when the button L1 is clicked
+    @IBAction func imagePickerL1ButtonTapped(_ sender: UIButton) {
+        pickImageButtonL1.isSelected = true
+        pickImage()
+    }
+    // method that manages the action when the button L2 is clicked
+    @IBAction func imagePickerButtonL2Tapped(_ sender: UIButton) {
+        pickImageButtonL2.isSelected = true
+        pickImage()
+    }
+    // method that manages the action when the button R1 is clicked
+    @IBAction func imagePickerButtonR1Tapped(_ sender: UIButton) {
+        pickImageButtonR1.isSelected = true
+        pickImage()
+    }
+    // method that manages the action when the button R2 is clicked
+    @IBAction func imagePickerButtonR2Tapped(_ sender: UIButton) {
+        pickImageButtonR2.isSelected = true
+        pickImage()
+    }
+    
     //-----------------------------------------------------
     // MARK: - Settings
     //-----------------------------------------------------
@@ -178,4 +216,55 @@ class ViewController: UIViewController {
         }
     }
 }
-
+    // ====================================
+    // MARK - Extension
+    // ====================================
+extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    // ====================================
+    // MARK - Import Image for Album
+    // ====================================
+    
+    // method that configures the image picker controller and presents it
+    func pickImage() {
+        
+        self.imagePickerController.delegate = self
+        self.imagePickerController.allowsEditing = false
+        self.imagePickerController.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        self.present(self.imagePickerController, animated: true, completion: nil)
+    }
+    // recover the image to assign it to the corresponding view image according to the button that is selected
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        if pickImageButtonL1.isSelected == true {
+            imageViewL1.image = info[UIImagePickerControllerOriginalImage] as? UIImage
+            pickImageButtonL1.isSelected = false
+            print("1")
+        }
+        if pickImageButtonL2.isSelected == true {
+            imageViewL2.image = info[UIImagePickerControllerOriginalImage] as? UIImage
+            pickImageButtonL2.isSelected = false
+            print("2")
+        }
+        if pickImageButtonR1.isSelected == true {
+        imageViewR1.image = info[UIImagePickerControllerOriginalImage] as? UIImage
+            self.dismiss(animated: true, completion: nil)
+            pickImageButtonR1.isSelected = false
+            print("3")
+        }
+       if pickImageButtonR2.isSelected == true {
+            self.imageViewR2.image = info[UIImagePickerControllerOriginalImage] as? UIImage
+            pickImageButtonR2.isSelected = false
+            print("4")
+        }
+        self.dismiss(animated: true, completion: nil)
+    }
+    // method used to cancel the choice of the image
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        pickImageButtonL1.isSelected = false
+        pickImageButtonL2.isSelected = false
+        pickImageButtonR1.isSelected = false
+        pickImageButtonR2.isSelected = false
+        self.dismiss(animated: true, completion: nil)
+    }
+}

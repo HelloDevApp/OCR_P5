@@ -122,15 +122,18 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="ity-0b-af0" userLabel="Square Stack View 1">
                                                 <rect key="frame" x="0.0" y="0.0" width="291" height="138"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N8L-AK-dZT" userLabel="Square L View 1">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N8L-AK-dZT" userLabel="Square View L1">
                                                         <rect key="frame" x="0.0" y="0.0" width="138" height="138"/>
                                                         <subviews>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GzX-DU-KgZ" userLabel="Image View L1">
+                                                            <imageView autoresizesSubviews="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GzX-DU-KgZ" userLabel="Image View L1">
                                                                 <rect key="frame" x="0.0" y="0.0" width="138" height="138"/>
                                                             </imageView>
-                                                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M2x-kC-xcO" userLabel="Combined Shape L Button">
+                                                            <button opaque="NO" tag="1" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M2x-kC-xcO" userLabel="Pick Image Button L1">
                                                                 <rect key="frame" x="45" y="45" width="48" height="48"/>
                                                                 <state key="normal" image="Combined Shape"/>
+                                                                <connections>
+                                                                    <action selector="imagePickerL1ButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yrf-8S-elp"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -144,44 +147,56 @@
                                                             <constraint firstItem="M2x-kC-xcO" firstAttribute="centerY" secondItem="N8L-AK-dZT" secondAttribute="centerY" id="rTG-yb-xMk"/>
                                                         </constraints>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UiJ-9a-iWy" userLabel="Square R View 1">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UiJ-9a-iWy" userLabel="Square View R1">
                                                         <rect key="frame" x="153" y="0.0" width="138" height="138"/>
                                                         <subviews>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jRk-yI-n8S" userLabel="Image View R1">
+                                                            <imageView autoresizesSubviews="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jRk-yI-n8S" userLabel="Image View R1">
                                                                 <rect key="frame" x="0.0" y="0.0" width="138" height="138"/>
                                                             </imageView>
-                                                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="211-92-gTm" userLabel="Combined Shape R Button">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZyL-NT-lgV" userLabel="Pick Image Button R1">
                                                                 <rect key="frame" x="45" y="45" width="48" height="48"/>
-                                                                <state key="normal" backgroundImage="Combined Shape"/>
+                                                                <state key="normal" image="Combined Shape"/>
+                                                                <connections>
+                                                                    <action selector="imagePickerButtonR1Tapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HRp-Q1-sVp"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="trailing" secondItem="jRk-yI-n8S" secondAttribute="trailing" id="8aw-fp-8SC"/>
-                                                            <constraint firstItem="211-92-gTm" firstAttribute="centerX" secondItem="UiJ-9a-iWy" secondAttribute="centerX" id="9lI-TI-CgE"/>
+                                                            <constraint firstAttribute="trailing" secondItem="jRk-yI-n8S" secondAttribute="trailing" id="4nS-vC-qYp"/>
+                                                            <constraint firstItem="jRk-yI-n8S" firstAttribute="leading" secondItem="UiJ-9a-iWy" secondAttribute="leading" id="792-4Z-7Fe"/>
                                                             <constraint firstItem="jRk-yI-n8S" firstAttribute="top" secondItem="UiJ-9a-iWy" secondAttribute="top" id="BDr-65-cGV"/>
-                                                            <constraint firstItem="jRk-yI-n8S" firstAttribute="leading" secondItem="UiJ-9a-iWy" secondAttribute="leading" id="Ghw-5w-mB2"/>
+                                                            <constraint firstItem="ZyL-NT-lgV" firstAttribute="centerY" secondItem="UiJ-9a-iWy" secondAttribute="centerY" id="BqE-YP-bld"/>
+                                                            <constraint firstItem="ZyL-NT-lgV" firstAttribute="centerX" secondItem="UiJ-9a-iWy" secondAttribute="centerX" id="HGC-rC-BVn"/>
                                                             <constraint firstAttribute="bottom" secondItem="jRk-yI-n8S" secondAttribute="bottom" id="OGB-fF-W6q"/>
-                                                            <constraint firstItem="211-92-gTm" firstAttribute="centerY" secondItem="UiJ-9a-iWy" secondAttribute="centerY" id="aGz-rI-tVh"/>
                                                         </constraints>
                                                     </view>
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstItem="UiJ-9a-iWy" firstAttribute="height" secondItem="N8L-AK-dZT" secondAttribute="height" id="29f-4l-cXR"/>
+                                                    <constraint firstItem="UiJ-9a-iWy" firstAttribute="top" secondItem="ity-0b-af0" secondAttribute="top" id="2Df-go-mKX"/>
+                                                    <constraint firstItem="N8L-AK-dZT" firstAttribute="top" secondItem="ity-0b-af0" secondAttribute="top" id="JKL-OC-l4a"/>
+                                                    <constraint firstAttribute="bottom" secondItem="UiJ-9a-iWy" secondAttribute="bottom" id="ReR-Qp-xmz"/>
+                                                    <constraint firstAttribute="trailing" secondItem="UiJ-9a-iWy" secondAttribute="trailing" id="UVu-AL-mwq"/>
+                                                    <constraint firstItem="N8L-AK-dZT" firstAttribute="leading" secondItem="ity-0b-af0" secondAttribute="leading" id="aCh-dR-baD"/>
+                                                    <constraint firstAttribute="bottom" secondItem="N8L-AK-dZT" secondAttribute="bottom" id="do3-v2-foU"/>
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="8Lv-Cn-7JQ" userLabel="Square Stack View 2">
                                                 <rect key="frame" x="0.0" y="153" width="291" height="138"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D5K-DC-prF" userLabel="Square L View 2">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D5K-DC-prF" userLabel="Square View L2">
                                                         <rect key="frame" x="0.0" y="0.0" width="138" height="138"/>
                                                         <subviews>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nou-1D-jw4" userLabel="Image View L2">
+                                                            <imageView autoresizesSubviews="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nou-1D-jw4" userLabel="Image View L2">
                                                                 <rect key="frame" x="0.0" y="0.0" width="138" height="138"/>
                                                             </imageView>
-                                                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dXF-39-SWa" userLabel="Combined Shape L Button">
+                                                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dXF-39-SWa" userLabel="Pick Image Button L2">
                                                                 <rect key="frame" x="45" y="45" width="48" height="48"/>
                                                                 <state key="normal" image="Combined Shape"/>
+                                                                <connections>
+                                                                    <action selector="imagePickerButtonL2Tapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oHf-DC-AoS"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -195,29 +210,38 @@
                                                             <constraint firstItem="dXF-39-SWa" firstAttribute="centerX" secondItem="D5K-DC-prF" secondAttribute="centerX" id="swY-Xu-gA6"/>
                                                         </constraints>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9pe-Ky-VaG" userLabel="Square R View 2">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9pe-Ky-VaG" userLabel="Square View R2">
                                                         <rect key="frame" x="153" y="0.0" width="138" height="138"/>
                                                         <subviews>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WEJ-Sd-ol3" userLabel="Image View R2">
+                                                            <imageView autoresizesSubviews="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WEJ-Sd-ol3" userLabel="Image View R2">
                                                                 <rect key="frame" x="0.0" y="0.0" width="138" height="138"/>
                                                             </imageView>
-                                                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S6Z-TJ-4eG" userLabel="Combined Shape R Button">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6UY-fG-2AP" userLabel="Pick Image Button R2">
                                                                 <rect key="frame" x="45" y="45" width="48" height="48"/>
-                                                                <state key="normal" backgroundImage="Combined Shape"/>
+                                                                <state key="normal" image="Combined Shape"/>
+                                                                <connections>
+                                                                    <action selector="imagePickerButtonR2Tapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="t1M-ap-6Nn"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="bottom" secondItem="WEJ-Sd-ol3" secondAttribute="bottom" id="6hD-EW-0B0"/>
+                                                            <constraint firstItem="6UY-fG-2AP" firstAttribute="centerY" secondItem="9pe-Ky-VaG" secondAttribute="centerY" id="8hy-OF-bm5"/>
                                                             <constraint firstItem="WEJ-Sd-ol3" firstAttribute="leading" secondItem="9pe-Ky-VaG" secondAttribute="leading" id="De6-cU-deY"/>
                                                             <constraint firstAttribute="trailing" secondItem="WEJ-Sd-ol3" secondAttribute="trailing" id="b8f-Ds-HKM"/>
-                                                            <constraint firstItem="S6Z-TJ-4eG" firstAttribute="centerX" secondItem="9pe-Ky-VaG" secondAttribute="centerX" id="msI-VZ-0W0"/>
                                                             <constraint firstItem="WEJ-Sd-ol3" firstAttribute="top" secondItem="9pe-Ky-VaG" secondAttribute="top" id="obY-qx-IEl"/>
-                                                            <constraint firstItem="S6Z-TJ-4eG" firstAttribute="centerY" secondItem="9pe-Ky-VaG" secondAttribute="centerY" id="v8B-Ng-kc6"/>
+                                                            <constraint firstItem="6UY-fG-2AP" firstAttribute="centerX" secondItem="9pe-Ky-VaG" secondAttribute="centerX" id="yMw-uV-MPa"/>
                                                         </constraints>
                                                     </view>
                                                 </subviews>
                                                 <constraints>
+                                                    <constraint firstItem="D5K-DC-prF" firstAttribute="top" secondItem="8Lv-Cn-7JQ" secondAttribute="top" id="1mJ-15-s1M"/>
+                                                    <constraint firstAttribute="bottom" secondItem="D5K-DC-prF" secondAttribute="bottom" id="Kky-Ba-2vs"/>
+                                                    <constraint firstAttribute="bottom" secondItem="9pe-Ky-VaG" secondAttribute="bottom" id="M1L-KI-O6u"/>
+                                                    <constraint firstAttribute="trailing" secondItem="9pe-Ky-VaG" secondAttribute="trailing" id="Mq9-j6-HHQ"/>
+                                                    <constraint firstItem="9pe-Ky-VaG" firstAttribute="top" secondItem="8Lv-Cn-7JQ" secondAttribute="top" id="Rsw-Wu-D4E"/>
+                                                    <constraint firstItem="D5K-DC-prF" firstAttribute="leading" secondItem="8Lv-Cn-7JQ" secondAttribute="leading" id="haj-Ud-Pqt"/>
                                                     <constraint firstItem="9pe-Ky-VaG" firstAttribute="height" secondItem="D5K-DC-prF" secondAttribute="height" id="nMd-CI-O6N"/>
                                                 </constraints>
                                             </stackView>
@@ -373,6 +397,7 @@
                                 <exclude reference="d9D-hc-2tI"/>
                                 <exclude reference="xPv-de-W6i"/>
                                 <exclude reference="yI8-CG-n6f"/>
+                                <exclude reference="CVN-Fc-xUK"/>
                                 <include reference="2GA-yh-ron"/>
                                 <include reference="B8h-DF-mGh"/>
                                 <include reference="D8Z-R3-ubT"/>
@@ -382,7 +407,6 @@
                                 <exclude reference="zGJ-NJ-0Gv"/>
                                 <exclude reference="zHe-df-g8x"/>
                                 <exclude reference="zZg-8b-rbL"/>
-                                <exclude reference="CVN-Fc-xUK"/>
                                 <include reference="5Pi-hm-ya9"/>
                                 <exclude reference="7x4-qc-bpz"/>
                                 <exclude reference="vds-Qh-LcX"/>
@@ -397,13 +421,17 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="imageVieWL2" destination="nou-1D-jw4" id="Yd8-zZ-Pse"/>
                         <outlet property="imageViewL1" destination="GzX-DU-KgZ" id="sml-1e-JZ7"/>
+                        <outlet property="imageViewL2" destination="nou-1D-jw4" id="SJa-ma-hTd"/>
                         <outlet property="imageViewR1" destination="jRk-yI-n8S" id="zu3-80-4fM"/>
-                        <outlet property="imageViewR2" destination="WEJ-Sd-ol3" id="fr1-o8-L77"/>
+                        <outlet property="imageViewR2" destination="WEJ-Sd-ol3" id="b0O-Ni-iqD"/>
                         <outlet property="layoutButton1" destination="EEi-7g-jhm" id="Yy4-Cf-5yh"/>
                         <outlet property="layoutButton2" destination="kMr-4f-ffe" id="TNj-fF-L92"/>
                         <outlet property="layoutButton3" destination="l9K-n7-yzq" id="RQH-UG-te0"/>
+                        <outlet property="pickImageButtonL1" destination="M2x-kC-xcO" id="EPb-Gn-aIO"/>
+                        <outlet property="pickImageButtonL2" destination="dXF-39-SWa" id="6h4-ys-qYX"/>
+                        <outlet property="pickImageButtonR1" destination="ZyL-NT-lgV" id="Qef-SI-VKn"/>
+                        <outlet property="pickImageButtonR2" destination="6UY-fG-2AP" id="AIg-9V-3XK"/>
                         <outlet property="squareViewL1" destination="N8L-AK-dZT" id="Icb-zt-rMq"/>
                         <outlet property="squareViewL1Ratio" destination="4Im-5A-Wre" id="01W-io-TDH"/>
                         <outlet property="squareViewL2" destination="D5K-DC-prF" id="Oc9-d9-CaE"/>
