@@ -27,7 +27,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe up to share" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="ZdV-gg-oxF">
-                                <rect key="frame" x="127" y="264" width="160.5" height="29"/>
+                                <rect key="frame" x="80" y="90" width="160.5" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="jCr-rx-PAN"/>
                                 </constraints>
@@ -64,8 +64,8 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="slanting-hook" translatesAutoresizingMaskIntoConstraints="NO" id="sd1-Ds-Tv5">
-                                <rect key="frame" x="199.5" y="254" width="15" height="10"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="slanting-hook" translatesAutoresizingMaskIntoConstraints="NO" id="sd1-Ds-Tv5" userLabel="slanting hook portrait">
+                                <rect key="frame" x="152.5" y="80" width="15" height="10"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="15" id="PIX-Pm-qOC"/>
                                     <constraint firstAttribute="height" constant="10" id="U91-7Z-nSt"/>
@@ -116,7 +116,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vgN-E7-cL2" userLabel="Square View M">
                                 <rect key="frame" x="353" y="56" width="321" height="321"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="lwy-Qt-DAV">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="lwy-Qt-DAV">
                                         <rect key="frame" x="15" y="15" width="291" height="291"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="ity-0b-af0" userLabel="Square Stack View 1">
@@ -280,7 +280,7 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="slanting-hook" translatesAutoresizingMaskIntoConstraints="NO" id="D3r-d8-cUR">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="slanting-hook" translatesAutoresizingMaskIntoConstraints="NO" id="D3r-d8-cUR" userLabel="slanting hook landscape">
                                 <rect key="frame" x="192.66666666666666" y="179" width="10" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="15" id="Ljo-rU-eSR"/>
@@ -436,6 +436,7 @@
                         <outlet property="squareViewL1Ratio" destination="4Im-5A-Wre" id="01W-io-TDH"/>
                         <outlet property="squareViewL2" destination="D5K-DC-prF" id="Oc9-d9-CaE"/>
                         <outlet property="squareViewL2Ratio" destination="JNd-0U-rdK" id="cm8-Be-JyS"/>
+                        <outlet property="squareViewMiddle" destination="vgN-E7-cL2" id="p37-jO-HNa"/>
                         <outlet property="squareViewR1" destination="UiJ-9a-iWy" id="CRo-if-9el"/>
                         <outlet property="squareViewR2" destination="9pe-Ky-VaG" id="qwI-7W-Moj"/>
                         <outlet property="stackViewBottom" destination="8Lv-Cn-7JQ" id="qAY-oC-Gfn"/>

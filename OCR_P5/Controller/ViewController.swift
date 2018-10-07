@@ -20,11 +20,15 @@ enum Layout {
 class ViewController: UIViewController {
 
     //--------------------------------------------------
-    // MARK: - @IBOutlets: StackViewTop and Bottom
+    // MARK: - @IBOutlets:
     //--------------------------------------------------
+    
+    //Global StackView
+    @IBOutlet weak var squareViewMiddle: UIView!
     
     //Top StackView
     @IBOutlet weak var stackViewTop: UIStackView!
+    
     // ⚠️1 = Top    ⚠️2 = Bottom    ⚠️L = Left    ⚠️R = Right
     //Top Left squareView
     @IBOutlet weak var squareViewL1: UIView!
@@ -42,6 +46,7 @@ class ViewController: UIViewController {
     
     //Bottom StackView
     @IBOutlet weak var stackViewBottom: UIStackView!
+    
     // ⚠️1 = Top    ⚠️2 = Bottom    ⚠️L = Left    ⚠️R = Right
     //Bottom Left squareView
     @IBOutlet weak var squareViewL2: UIView!
@@ -56,9 +61,6 @@ class ViewController: UIViewController {
     //Bottom Right Button
     @IBOutlet weak var pickImageButtonR2: UIButton!
     
-    //--------------------------------------------------
-    // MARK: - @IBOutlets: LayoutButton
-    //--------------------------------------------------
     //PORTRAIT MODE: ⚠️1 = Left   ⚠️2 = Center   ⚠️2 = Right
     //LANDSCAPE MODE: ⚠️1 = Top   ⚠️2 = Center   ⚠️2 = Bottom
     @IBOutlet weak var layoutButton1: UIButton!
@@ -69,12 +71,17 @@ class ViewController: UIViewController {
     //-------------------------------------------------
     // MARK: - Instances
     //-------------------------------------------------
+    let swipeUp = UISwipeGestureRecognizer()
+    let swipeLeft = UISwipeGestureRecognizer()
     var imagePickerController = UIImagePickerController()
     
     //-------------------------------------------------
     // MARK: - Properties
     //-------------------------------------------------
- 
+    var currentLayout: Layout = .rectangularBottomView
+    var readyToShare = false
+    var imageToShare: UIImage?
+    
     //--------------------------------------------------
     // MARK: - Constraints
     //-------------------------------------------------
@@ -93,18 +100,6 @@ class ViewController: UIViewController {
         squareViewL1Ratio.isActive = false
         squareViewL2Ratio.isActive = false
         displaysLayout(layoutStyle: .rectangularBottomView)
-        
-        // ====================================
-        // MARK: Init Swipe Gesture
-        // ====================================
-        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(ViewController.upSwipe))
-        swipe.direction = .up
-        self.view.addGestureRecognizer(swipe)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     //--------------------------------------------------
@@ -113,8 +108,8 @@ class ViewController: UIViewController {
     
     //layoutButton is on the left in portrait mode ⚠️layoutButton is on the top in landscape mode⚠️
     @IBAction func layoutButton1Tapped(_ sender: UIButton) {
-        
-        //disabledButton(disabled: layoutButton1, enabled1: layoutButton2, enabled2: layoutButton3)
+        checkImagePickedIsComplete(layoutStyle: .rectangularTopView)
+        checkReadyToShareForEnabledSwipe()
         displaysLayout(layoutStyle: .rectangularTopView)
         layoutButton1.setImage(#imageLiteral(resourceName: "Selected"), for: .normal)
         layoutButton2.setImage(nil, for: .normal)
@@ -124,8 +119,8 @@ class ViewController: UIViewController {
     
     //center layoutButton in portrait and landscape mode
     @IBAction func layoutButton2Tapped(_ sender: UIButton) {
-        
-        //disabledButton(disabled: layoutButton2, enabled1: layoutButton1, enabled2: layoutButton3)
+        checkImagePickedIsComplete(layoutStyle: .rectangularBottomView)
+        checkReadyToShareForEnabledSwipe()
         displaysLayout(layoutStyle: .rectangularBottomView)
         layoutButton2.setImage(#imageLiteral(resourceName: "Selected"), for: .normal)
         layoutButton1.setImage(nil, for: .normal)
@@ -135,8 +130,8 @@ class ViewController: UIViewController {
     
     //layoutButton is on the right in portrait mode ⚠️layoutButton is on the bottom in landscape mode⚠️
     @IBAction func layoutButton3Tapped(_ sender: UIButton) {
-        
-        //disabledButton(disabled: layoutButton3, enabled1: layoutButton1, enabled2: layoutButton2)
+        checkImagePickedIsComplete(layoutStyle: .squareView)
+        checkReadyToShareForEnabledSwipe()
         displaysLayout(layoutStyle: .squareView)
         layoutButton3.setImage(#imageLiteral(resourceName: "Selected"), for: .normal)
         layoutButton1.setImage(nil, for: .normal)
@@ -188,32 +183,27 @@ class ViewController: UIViewController {
         }
     }
     
-    // disable a button after clicking it. this method is not used by default in the program
-    /*func disabledButton(disabled: UIButton, enabled1: UIButton, enabled2: UIButton) {
-        disabled.isEnabled = false
-        enabled1.isEnabled = true
-        enabled2.isEnabled = true
-    }
-    */
-    
     //method which parameters the different layout style cases
     func currentLayout(layoutStyle: Layout) {
         
         switch layoutStyle {
             
         case .rectangularBottomView:
+            currentLayout = .rectangularBottomView
             squareViewR2.isHidden = true
             imageViewR2.isHidden = true
             squareViewR1.isHidden = false
             imageViewR1.isHidden = false
             
         case .rectangularTopView:
+            currentLayout = .rectangularTopView
             squareViewR1.isHidden = true
             imageViewR1.isHidden = true
             squareViewR2.isHidden = false
             imageViewR2.isHidden = false
             
         case .squareView:
+            currentLayout = .squareView
             squareViewR1.isHidden = false
             imageViewR1.isHidden = false
             squareViewR2.isHidden = false
@@ -221,11 +211,114 @@ class ViewController: UIViewController {
             
         }
     }
-    // ====================================
-    // MARK - Swipe Gesture Method
-    // ====================================
-    @objc func upSwipe() {
+    
+    // checks that all pictures have been imported
+    func checkImagePickedIsComplete(layoutStyle: Layout) {
 
+        switch layoutStyle {
+        case .rectangularBottomView:
+            if imageViewL1.image != nil && imageViewL2.image != nil && imageViewR1.image != nil {
+                hideButtonForCreateImageToShare(yes: true)
+                checkReadyToShareForEnabledSwipe()
+            } else {
+                hideButtonForCreateImageToShare(yes: false)
+            }
+        case .rectangularTopView:
+            if imageViewL1.image != nil && imageViewL2.image != nil && imageViewR2.image != nil {
+                hideButtonForCreateImageToShare(yes: true)
+                checkReadyToShareForEnabledSwipe()
+            } else {
+                hideButtonForCreateImageToShare(yes: false)
+            }
+        case .squareView:
+            if imageViewL1.image != nil && imageViewL2.image != nil && imageViewR1.image != nil && imageViewR2.image != nil {
+                hideButtonForCreateImageToShare(yes: true)
+                checkReadyToShareForEnabledSwipe()
+            } else {
+                hideButtonForCreateImageToShare(yes: false)
+            }
+        }
+    }
+    // hide buttons for create context graphic
+    func hideButtonForCreateImageToShare(yes: Bool) {
+        if yes == true {
+            pickImageButtonL1.isHidden = true
+            pickImageButtonL2.isHidden = true
+            pickImageButtonR1.isHidden = true
+            pickImageButtonR2.isHidden = true
+            readyToShare = true
+        } else {
+            pickImageButtonL1.isHidden = false
+            pickImageButtonL2.isHidden = false
+            pickImageButtonR1.isHidden = false
+            pickImageButtonR2.isHidden = false
+            readyToShare = false
+        }
+    }
+    // checks that the image is ready to share to activate the swipe that corresponds to the orientation
+    func checkReadyToShareForEnabledSwipe() {
+        if readyToShare {
+            initSwipeGesture()
+        } else {
+            self.view.removeGestureRecognizer(swipeUp)
+            self.view.removeGestureRecognizer(swipeLeft)
+        }
+    }
+    // ====================================
+    // MARK: Swipe Gesture Settings
+    // ====================================
+    
+    // allows you to configure the swipe and add or remove it to the view
+    func initSwipeGesture() {
+        swipeUp.direction = .up
+        swipeLeft.direction = .left
+        if UIDevice.current.orientation == .portrait {
+            swipeUp.addTarget(self, action: #selector(swipeUpAction))
+            self.view.removeGestureRecognizer(swipeLeft)
+            self.view.addGestureRecognizer(swipeUp)
+        } else {
+            swipeLeft.addTarget(self, action: #selector(swipeLeftAction))
+            self.view.removeGestureRecognizer(swipeUp)
+            self.view.addGestureRecognizer(swipeLeft)
+        }
+    }
+    
+    // detects each time the device changes orientation
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        checkReadyToShareForEnabledSwipe()
+    }
+    
+    // ====================================
+    // MARK:  Swipe Gesture Action
+    // ====================================
+    
+    @objc func swipeUpAction() {
+        createImageToShare()
+        shareImage()
+    }
+    
+    @objc func swipeLeftAction() {
+        createImageToShare()
+        shareImage()
+    }
+    
+    func createImageToShare() {
+        UIGraphicsBeginImageContext(squareViewMiddle.frame.size)
+        squareViewMiddle.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let viewImage = UIGraphicsGetImageFromCurrentImageContext()
+        imageToShare = viewImage
+        UIGraphicsEndImageContext()
+    }
+    
+    func shareImage() {
+        var itemToShare = [UIImage]()
+        if imageToShare != nil {
+        itemToShare.append(imageToShare!)
+        }
+        let activityViewController = UIActivityViewController(activityItems:itemToShare, applicationActivities: nil)
+        activityViewController.modalPresentationStyle = .overCurrentContext
+        self.present(activityViewController, animated: true, completion: nil)
     }
 }
     // ====================================
@@ -241,9 +334,10 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
     func pickImage() {
         
         self.imagePickerController.delegate = self
+        imagePickerController.modalPresentationStyle = .overCurrentContext
         self.imagePickerController.allowsEditing = false
         self.imagePickerController.sourceType = UIImagePickerControllerSourceType.photoLibrary
-        self.present(self.imagePickerController, animated: true, completion: nil)
+        self.present(imagePickerController, animated: true, completion: nil)
     }
     // recover the image to assign it to the corresponding view image according to the button that is selected
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -251,24 +345,20 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
         if pickImageButtonL1.isSelected == true {
             imageViewL1.image = info[UIImagePickerControllerOriginalImage] as? UIImage
             pickImageButtonL1.isSelected = false
-            print("1")
         }
         if pickImageButtonL2.isSelected == true {
             imageViewL2.image = info[UIImagePickerControllerOriginalImage] as? UIImage
             pickImageButtonL2.isSelected = false
-            print("2")
         }
         if pickImageButtonR1.isSelected == true {
-        imageViewR1.image = info[UIImagePickerControllerOriginalImage] as? UIImage
-            self.dismiss(animated: true, completion: nil)
+            imageViewR1.image = info[UIImagePickerControllerOriginalImage] as? UIImage
             pickImageButtonR1.isSelected = false
-            print("3")
         }
        if pickImageButtonR2.isSelected == true {
             self.imageViewR2.image = info[UIImagePickerControllerOriginalImage] as? UIImage
             pickImageButtonR2.isSelected = false
-            print("4")
         }
+        checkImagePickedIsComplete(layoutStyle: currentLayout)
         self.dismiss(animated: true, completion: nil)
     }
     // method used to cancel the choice of the image
