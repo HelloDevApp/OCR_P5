@@ -294,7 +294,7 @@ class ViewController: UIViewController {
     // ====================================
     // MARK: - Swipe Gesture Action
     // ====================================
-    
+    // method to call during a swipe up
     @objc func swipeUpAction() {
         guard readyToShare else {
             return
@@ -302,7 +302,7 @@ class ViewController: UIViewController {
         createImageToShare()
         shareImage()
     }
-    
+    //method to call during a swipe left
     @objc func swipeLeftAction() {
         guard readyToShare else {
             return
@@ -341,6 +341,7 @@ class ViewController: UIViewController {
         self.present(activityViewController, animated: true, completion: nil)
         
     }
+    // allows you to reset the interface elements
     func reset() {
         imageViewL1.image = nil
         imageViewL2.image = nil
