@@ -11,6 +11,7 @@ import UIKit
 //--------------------------------------------------
 // MARK: - Enumeration
 //-------------------------------------------------
+
 enum Layout {
     case rectangularBottomView
     case rectangularTopView
@@ -67,10 +68,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var layoutButton2: UIButton!
     @IBOutlet weak var layoutButton3: UIButton!
     
-    
     //-------------------------------------------------
     // MARK: - Instances
     //-------------------------------------------------
+    
     let swipeUp = UISwipeGestureRecognizer()
     let swipeLeft = UISwipeGestureRecognizer()
     var imagePickerController = UIImagePickerController()
@@ -78,6 +79,7 @@ class ViewController: UIViewController {
     //-------------------------------------------------
     // MARK: - Properties
     //-------------------------------------------------
+    
     var currentLayout: Layout = .rectangularBottomView
     var readyToShare = false
     var imageToShare: UIImage?
@@ -101,7 +103,7 @@ class ViewController: UIViewController {
         squareViewL2Ratio.isActive = false
         displaysLayout(layoutStyle: .rectangularBottomView)
     }
-
+    
     //--------------------------------------------------
     // MARK: - Layout Buttons @IBAction
     //-------------------------------------------------
@@ -114,7 +116,6 @@ class ViewController: UIViewController {
         layoutButton1.setImage(#imageLiteral(resourceName: "Selected"), for: .normal)
         layoutButton2.setImage(nil, for: .normal)
         layoutButton3.setImage(nil, for: .normal)
-
     }
     
     //center layoutButton in portrait and landscape mode
@@ -125,7 +126,6 @@ class ViewController: UIViewController {
         layoutButton2.setImage(#imageLiteral(resourceName: "Selected"), for: .normal)
         layoutButton1.setImage(nil, for: .normal)
         layoutButton3.setImage(nil, for: .normal)
-
     }
     
     //layoutButton is on the right in portrait mode ⚠️layoutButton is on the bottom in landscape mode⚠️
@@ -136,7 +136,6 @@ class ViewController: UIViewController {
         layoutButton3.setImage(#imageLiteral(resourceName: "Selected"), for: .normal)
         layoutButton1.setImage(nil, for: .normal)
         layoutButton2.setImage(nil, for: .normal)
-
     }
     
     //--------------------------------------------------
@@ -148,16 +147,19 @@ class ViewController: UIViewController {
         pickImageButtonL1.isSelected = true
         pickImage()
     }
+    
     // method that manages the action when the button L2 is clicked
     @IBAction func imagePickerButtonL2Tapped(_ sender: UIButton) {
         pickImageButtonL2.isSelected = true
         pickImage()
     }
+    
     // method that manages the action when the button R1 is clicked
     @IBAction func imagePickerButtonR1Tapped(_ sender: UIButton) {
         pickImageButtonR1.isSelected = true
         pickImage()
     }
+    
     // method that manages the action when the button R2 is clicked
     @IBAction func imagePickerButtonR2Tapped(_ sender: UIButton) {
         pickImageButtonR2.isSelected = true
@@ -165,7 +167,7 @@ class ViewController: UIViewController {
     }
     
     //-----------------------------------------------------
-    // MARK: - Settings
+    // MARK: - Settings Layout
     //-----------------------------------------------------
     
     //method that displays the chosen layout style
@@ -179,7 +181,6 @@ class ViewController: UIViewController {
             currentLayout(layoutStyle: .rectangularTopView)
         case .squareView:
             currentLayout(layoutStyle: .squareView)
-            
         }
     }
     
@@ -194,21 +195,18 @@ class ViewController: UIViewController {
             imageViewR2.isHidden = true
             squareViewR1.isHidden = false
             imageViewR1.isHidden = false
-            
         case .rectangularTopView:
             currentLayout = .rectangularTopView
             squareViewR1.isHidden = true
             imageViewR1.isHidden = true
             squareViewR2.isHidden = false
             imageViewR2.isHidden = false
-            
         case .squareView:
             currentLayout = .squareView
             squareViewR1.isHidden = false
             imageViewR1.isHidden = false
             squareViewR2.isHidden = false
             imageViewR2.isHidden = false
-            
         }
     }
     
@@ -216,6 +214,7 @@ class ViewController: UIViewController {
     func checkImagePickedIsComplete(layoutStyle: Layout) {
 
         switch layoutStyle {
+            
         case .rectangularBottomView:
             if imageViewL1.image != nil && imageViewL2.image != nil && imageViewR1.image != nil {
                 hideButtonForCreateImageToShare(yes: true)
@@ -239,6 +238,7 @@ class ViewController: UIViewController {
             }
         }
     }
+    
     // hide buttons for create context graphic
     func hideButtonForCreateImageToShare(yes: Bool) {
         if yes == true {
@@ -255,6 +255,7 @@ class ViewController: UIViewController {
             readyToShare = false
         }
     }
+    
     // checks that the image is ready to share to activate the swipe that corresponds to the orientation
     func checkReadyToShareForEnabledSwipe() {
         if readyToShare {
@@ -264,6 +265,7 @@ class ViewController: UIViewController {
             self.view.removeGestureRecognizer(swipeLeft)
         }
     }
+    
     // ====================================
     // MARK: Swipe Gesture Settings
     // ====================================
@@ -290,7 +292,7 @@ class ViewController: UIViewController {
     }
     
     // ====================================
-    // MARK:  Swipe Gesture Action
+    // MARK: - Swipe Gesture Action
     // ====================================
     
     @objc func swipeUpAction() {
@@ -303,6 +305,11 @@ class ViewController: UIViewController {
         shareImage()
     }
     
+    // ====================================
+    // MARK: - Share Image Method
+    // ====================================
+    
+    //allows you to create the image to share and assign it to the imageToShare variable
     func createImageToShare() {
         UIGraphicsBeginImageContext(squareViewMiddle.frame.size)
         squareViewMiddle.layer.render(in: UIGraphicsGetCurrentContext()!)
@@ -311,6 +318,7 @@ class ViewController: UIViewController {
         UIGraphicsEndImageContext()
     }
     
+    // adds the image to share, creates the UIActivityViewController and then presents it
     func shareImage() {
         var itemToShare = [UIImage]()
         if imageToShare != nil {
@@ -321,27 +329,28 @@ class ViewController: UIViewController {
         self.present(activityViewController, animated: true, completion: nil)
     }
 }
+
     // ====================================
-    // MARK - Extension
+    // MARK: - Extension
     // ====================================
+
 extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     // ====================================
-    // MARK - Import Image for Album
+    // MARK: Import Image for Album
     // ====================================
     
     // method that configures the image picker controller and presents it
     func pickImage() {
-        
         self.imagePickerController.delegate = self
         imagePickerController.modalPresentationStyle = .overCurrentContext
         self.imagePickerController.allowsEditing = false
         self.imagePickerController.sourceType = UIImagePickerControllerSourceType.photoLibrary
         self.present(imagePickerController, animated: true, completion: nil)
     }
+    
     // recover the image to assign it to the corresponding view image according to the button that is selected
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        
         if pickImageButtonL1.isSelected == true {
             imageViewL1.image = info[UIImagePickerControllerOriginalImage] as? UIImage
             pickImageButtonL1.isSelected = false
@@ -361,6 +370,7 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
         checkImagePickedIsComplete(layoutStyle: currentLayout)
         self.dismiss(animated: true, completion: nil)
     }
+    
     // method used to cancel the choice of the image
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         pickImageButtonL1.isSelected = false
