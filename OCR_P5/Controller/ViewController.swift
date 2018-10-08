@@ -217,30 +217,30 @@ class ViewController: UIViewController {
             
         case .rectangularBottomView:
             if imageViewL1.image != nil && imageViewL2.image != nil && imageViewR1.image != nil {
-                hideButtonForCreateImageToShare(yes: true)
+                hideButton(yes: true)
                 checkReadyToShareForEnabledSwipe()
             } else {
-                hideButtonForCreateImageToShare(yes: false)
+                hideButton(yes: false)
             }
         case .rectangularTopView:
             if imageViewL1.image != nil && imageViewL2.image != nil && imageViewR2.image != nil {
-                hideButtonForCreateImageToShare(yes: true)
+                hideButton(yes: true)
                 checkReadyToShareForEnabledSwipe()
             } else {
-                hideButtonForCreateImageToShare(yes: false)
+                hideButton(yes: false)
             }
         case .squareView:
             if imageViewL1.image != nil && imageViewL2.image != nil && imageViewR1.image != nil && imageViewR2.image != nil {
-                hideButtonForCreateImageToShare(yes: true)
+                hideButton(yes: true)
                 checkReadyToShareForEnabledSwipe()
             } else {
-                hideButtonForCreateImageToShare(yes: false)
+                hideButton(yes: false)
             }
         }
     }
     
     // hide buttons for create context graphic
-    func hideButtonForCreateImageToShare(yes: Bool) {
+    func hideButton(yes: Bool) {
         if yes == true {
             pickImageButtonL1.isHidden = true
             pickImageButtonL2.isHidden = true
@@ -296,11 +296,17 @@ class ViewController: UIViewController {
     // ====================================
     
     @objc func swipeUpAction() {
+        guard readyToShare else {
+            return
+        }
         createImageToShare()
         shareImage()
     }
     
     @objc func swipeLeftAction() {
+        guard readyToShare else {
+            return
+        }
         createImageToShare()
         shareImage()
     }
@@ -326,7 +332,23 @@ class ViewController: UIViewController {
         }
         let activityViewController = UIActivityViewController(activityItems:itemToShare, applicationActivities: nil)
         activityViewController.modalPresentationStyle = .overCurrentContext
+        activityViewController.completionWithItemsHandler = {
+            (activity, success, items, error) in
+            if success {
+            self.reset()
+            }
+        }
         self.present(activityViewController, animated: true, completion: nil)
+        
+    }
+    func reset() {
+        imageViewL1.image = nil
+        imageViewL2.image = nil
+        imageViewR1.image = nil
+        imageViewR2.image = nil
+        hideButton(yes: false)
+        imageToShare = nil
+        readyToShare = false
     }
 }
 
