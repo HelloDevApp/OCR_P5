@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     // MARK: - @IBOutlets:
     //--------------------------------------------------
     
-    //Global StackView
+    // View Middle
     @IBOutlet weak var squareViewMiddle: UIView!
     
     //Top StackView
@@ -80,8 +80,11 @@ class ViewController: UIViewController {
     // MARK: - Properties
     //-------------------------------------------------
     
+    // variable that contains the current layout of the interface elements
     var currentLayout: Layout = .rectangularBottomView
+    // is used to check if the sharing of the image is ready
     var readyToShare = false
+    // contains the final image that will be used for sharing
     var imageToShare: UIImage?
     
     //--------------------------------------------------
@@ -116,6 +119,7 @@ class ViewController: UIViewController {
         layoutButton1.setImage(#imageLiteral(resourceName: "Selected"), for: .normal)
         layoutButton2.setImage(nil, for: .normal)
         layoutButton3.setImage(nil, for: .normal)
+        animateView(view: squareViewMiddle)
     }
     
     //center layoutButton in portrait and landscape mode
@@ -126,6 +130,7 @@ class ViewController: UIViewController {
         layoutButton2.setImage(#imageLiteral(resourceName: "Selected"), for: .normal)
         layoutButton1.setImage(nil, for: .normal)
         layoutButton3.setImage(nil, for: .normal)
+        animateView(view: squareViewMiddle)
     }
     
     //layoutButton is on the right in portrait mode ⚠️layoutButton is on the bottom in landscape mode⚠️
@@ -136,6 +141,7 @@ class ViewController: UIViewController {
         layoutButton3.setImage(#imageLiteral(resourceName: "Selected"), for: .normal)
         layoutButton1.setImage(nil, for: .normal)
         layoutButton2.setImage(nil, for: .normal)
+        animateView(view: squareViewMiddle)
     }
     
     //--------------------------------------------------
@@ -326,10 +332,12 @@ class ViewController: UIViewController {
     
     // adds the image to share, creates the UIActivityViewController and then presents it
     func shareImage() {
+        // table that contains the elements to share
         var itemToShare = [UIImage]()
         if imageToShare != nil {
         itemToShare.append(imageToShare!)
         }
+        // create an activityViewController that allows you to configure the display of the sharing interface
         let activityViewController = UIActivityViewController(activityItems:itemToShare, applicationActivities: nil)
         activityViewController.modalPresentationStyle = .overCurrentContext
         activityViewController.completionWithItemsHandler = {
@@ -350,6 +358,36 @@ class ViewController: UIViewController {
         hideButton(yes: false)
         imageToShare = nil
         readyToShare = false
+    }
+    // method that animates the apparition of an image by enlarging it
+    func animateImageView(imageView: UIImageView) {
+        UIView.animate(withDuration: 0.0, animations: {
+            imageView.transform = CGAffineTransform.identity.scaledBy(x: 0.0, y: 0.0)
+        }, completion: { (finish) in
+            UIView.animate(withDuration: 0.5, animations: {
+                imageView.transform = CGAffineTransform.identity
+            })
+        })
+    }
+    //method that allows an animation with a rotation of 720°degrees with a slowing effect at the end
+    func animateView(view: UIView) {
+        if readyToShare {
+            UIView.animate(withDuration: 0.10, delay: 0.70, options: .curveLinear, animations: {
+                view.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
+            }, completion: nil)
+
+            UIView.animate(withDuration: 0.15, delay: 0.80, options: .curveLinear, animations: {
+                view.transform = CGAffineTransform.identity
+            })
+        
+            UIView.animate(withDuration: 0.20, delay: 0.95, options: .curveLinear, animations: {
+                view.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
+            }, completion: nil)
+
+            UIView.animate(withDuration: 0.25, delay: 1.15, options: .curveLinear, animations: {
+                view.transform = CGAffineTransform.identity
+            })
+        }
     }
 }
 
@@ -376,21 +414,26 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if pickImageButtonL1.isSelected == true {
             imageViewL1.image = info[UIImagePickerControllerOriginalImage] as? UIImage
+            animateImageView(imageView: imageViewL1)
             pickImageButtonL1.isSelected = false
         }
         if pickImageButtonL2.isSelected == true {
             imageViewL2.image = info[UIImagePickerControllerOriginalImage] as? UIImage
+            animateImageView(imageView: imageViewL2)
             pickImageButtonL2.isSelected = false
         }
         if pickImageButtonR1.isSelected == true {
             imageViewR1.image = info[UIImagePickerControllerOriginalImage] as? UIImage
+            animateImageView(imageView: imageViewR1)
             pickImageButtonR1.isSelected = false
         }
        if pickImageButtonR2.isSelected == true {
             self.imageViewR2.image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        animateImageView(imageView: imageViewR2)
             pickImageButtonR2.isSelected = false
         }
         checkImagePickedIsComplete(layoutStyle: currentLayout)
+        animateView(view: squareViewMiddle)
         self.dismiss(animated: true, completion: nil)
     }
     
