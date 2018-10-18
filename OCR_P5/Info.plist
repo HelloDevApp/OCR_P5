@@ -46,5 +46,7 @@
 		<string>Delm-Medium.otf</string>
 		<string>ThirstySoftRegular.otf</string>
 	</array>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Instagrid a besoin de votre autorisation pour enregistrer des photos dans la galerie.</string>
 </dict>
 </plist>
