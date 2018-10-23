@@ -88,22 +88,12 @@ class ViewController: UIViewController {
     var imageToShare: UIImage?
     
     //--------------------------------------------------
-    // MARK: - Constraints
-    //-------------------------------------------------
-    
-    //constraint use to have a square view
-    @IBOutlet weak var squareViewL2Ratio: NSLayoutConstraint!
-    @IBOutlet weak var squareViewL1Ratio: NSLayoutConstraint!
-    
-    //--------------------------------------------------
     // MARK: - Standard Methods
     //-------------------------------------------------
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        squareViewL1Ratio.isActive = false
-        squareViewL2Ratio.isActive = false
         displaysLayout(layoutStyle: .rectangularBottomView)
     }
     
@@ -113,37 +103,30 @@ class ViewController: UIViewController {
     
     //layoutButton is on the left in portrait mode ⚠️layoutButton is on the top in landscape mode⚠️
     @IBAction func layoutButton1Tapped(_ sender: UIButton) {
-        checkImagePickedIsComplete(layoutStyle: .rectangularTopView)
-        checkReadyToShareForEnabledSwipe()
-        displaysLayout(layoutStyle: .rectangularTopView)
-        layoutButton1.setImage(#imageLiteral(resourceName: "Selected"), for: .normal)
-        layoutButton2.setImage(nil, for: .normal)
-        layoutButton3.setImage(nil, for: .normal)
-        animateView(view: squareViewMiddle)
+        updateLayoutAndAnimateIfCOmpleted(layoutStyle: .rectangularTopView, buttonImageSelected: layoutButton1, buttonsImageNil: [layoutButton2,layoutButton3])
     }
     
     //center layoutButton in portrait and landscape mode
     @IBAction func layoutButton2Tapped(_ sender: UIButton) {
-        checkImagePickedIsComplete(layoutStyle: .rectangularBottomView)
-        checkReadyToShareForEnabledSwipe()
-        displaysLayout(layoutStyle: .rectangularBottomView)
-        layoutButton2.setImage(#imageLiteral(resourceName: "Selected"), for: .normal)
-        layoutButton1.setImage(nil, for: .normal)
-        layoutButton3.setImage(nil, for: .normal)
-        animateView(view: squareViewMiddle)
+        updateLayoutAndAnimateIfCOmpleted(layoutStyle: .rectangularBottomView, buttonImageSelected: layoutButton2, buttonsImageNil: [layoutButton1,layoutButton3])
     }
     
     //layoutButton is on the right in portrait mode ⚠️layoutButton is on the bottom in landscape mode⚠️
     @IBAction func layoutButton3Tapped(_ sender: UIButton) {
-        checkImagePickedIsComplete(layoutStyle: .squareView)
-        checkReadyToShareForEnabledSwipe()
-        displaysLayout(layoutStyle: .squareView)
-        layoutButton3.setImage(#imageLiteral(resourceName: "Selected"), for: .normal)
-        layoutButton1.setImage(nil, for: .normal)
-        layoutButton2.setImage(nil, for: .normal)
+        updateLayoutAndAnimateIfCOmpleted(layoutStyle: .squareView, buttonImageSelected: layoutButton3, buttonsImageNil: [layoutButton1,layoutButton2])
+    }
+    // check if images picked is completed for hide buttons, active swipe (if images picked is completed) and display new layout style
+    func updateLayoutAndAnimateIfCOmpleted(layoutStyle: Layout, buttonImageSelected: UIButton, buttonsImageNil: [UIButton]) {
+        // ***hide button andenabled Swipe*** only if images Picked of layout is completed
+        CheckLayoutStyleCompletedForhideButtonAndEnabledSwipe(layoutStyle: layoutStyle)
+        displaysLayout(layoutStyle: layoutStyle)
+        buttonImageSelected.setImage(#imageLiteral(resourceName: "Selected"), for: .normal)
+        for button in buttonsImageNil {
+            button.setImage(nil, for: .normal)
+        }
+        // animate only if images Picked of layout is completed
         animateView(view: squareViewMiddle)
     }
-    
     //--------------------------------------------------
     // MARK: - Image Picker Buttons @IBAction
     //-------------------------------------------------
@@ -182,98 +165,93 @@ class ViewController: UIViewController {
         switch layoutStyle {
             
         case .rectangularBottomView:
-            currentLayout(layoutStyle: .rectangularBottomView)
+            settingsLayout(layoutStyle: .rectangularBottomView)
         case .rectangularTopView:
-            currentLayout(layoutStyle: .rectangularTopView)
+            settingsLayout(layoutStyle: .rectangularTopView)
         case .squareView:
-            currentLayout(layoutStyle: .squareView)
+            settingsLayout(layoutStyle: .squareView)
         }
     }
     
     //method which parameters the different layout style cases
-    func currentLayout(layoutStyle: Layout) {
+    func settingsLayout(layoutStyle: Layout) {
         
         switch layoutStyle {
             
         case .rectangularBottomView:
             currentLayout = .rectangularBottomView
-            squareViewR2.isHidden = true
-            imageViewR2.isHidden = true
-            squareViewR1.isHidden = false
-            imageViewR1.isHidden = false
+            // only first element in arrays is equal to value
+            hiddenViewsAndImageViewsForDisplayLayout(views: [squareViewR2,squareViewR1], imageViews: [imageViewR2,imageViewR1], value: true)
         case .rectangularTopView:
             currentLayout = .rectangularTopView
-            squareViewR1.isHidden = true
-            imageViewR1.isHidden = true
-            squareViewR2.isHidden = false
-            imageViewR2.isHidden = false
+            // only first element in arrays is equal to value
+            hiddenViewsAndImageViewsForDisplayLayout(views: [squareViewR1,squareViewR2], imageViews: [imageViewR1,imageViewR2], value: true)
         case .squareView:
             currentLayout = .squareView
-            squareViewR1.isHidden = false
-            imageViewR1.isHidden = false
-            squareViewR2.isHidden = false
-            imageViewR2.isHidden = false
+            // only first element in arrays is equal to value
+            hiddenViewsAndImageViewsForDisplayLayout(views: [squareViewL1,squareViewL2,squareViewR1,squareViewR2], imageViews: [imageViewL1,imageViewL2,imageViewR1,imageViewR2], value: false)
+        }
+    }
+    // the value of the value parameter is inverted at each loop turn so that only the first object in an array takes the value value (only if the display style is different from.squareView)
+    func hiddenViewsAndImageViewsForDisplayLayout(views: [UIView], imageViews: [UIImageView], value: Bool) {
+       var value = value
+        for view in views {
+            view.isHidden = value
+            if currentLayout != .squareView {
+                value = !value
+            }
+        }
+        for imageView in imageViews {
+            imageView.isHidden = value
+            if currentLayout != .squareView {
+                value = !value
+            }
         }
     }
     
     // checks that all pictures have been imported
-    func checkImagePickedIsComplete(layoutStyle: Layout) {
+    func CheckLayoutStyleCompletedForhideButtonAndEnabledSwipe(layoutStyle: Layout) {
 
         switch layoutStyle {
             
         case .rectangularBottomView:
-            if imageViewL1.image != nil && imageViewL2.image != nil && imageViewR1.image != nil {
-                hideButton(yes: true)
-                checkReadyToShareForEnabledSwipe()
-            } else {
-                hideButton(yes: false)
-            }
+            // checks if the chosen layout is complete according to the parameters
+            checkIfHideButtonsAndEnabledSwipe(imageViews: [imageViewL1, imageViewL2, imageViewR1])
         case .rectangularTopView:
-            if imageViewL1.image != nil && imageViewL2.image != nil && imageViewR2.image != nil {
-                hideButton(yes: true)
-                checkReadyToShareForEnabledSwipe()
-            } else {
-                hideButton(yes: false)
-            }
+            // checks if the chosen layout is complete according to the parameters
+            checkIfHideButtonsAndEnabledSwipe(imageViews: [imageViewL1, imageViewL2, imageViewR2])
         case .squareView:
-            if imageViewL1.image != nil && imageViewL2.image != nil && imageViewR1.image != nil && imageViewR2.image != nil {
-                hideButton(yes: true)
-                checkReadyToShareForEnabledSwipe()
-            } else {
-                hideButton(yes: false)
+            // checks if the chosen layout is complete according to the parameters
+            checkIfHideButtonsAndEnabledSwipe(imageViews: [imageViewL1, imageViewL2, imageViewR1, imageViewR2])
+        }
+    }
+    // hideButtons, enableSwipe and modify value of ReadyToShare (if completed layout import images)
+    func checkIfHideButtonsAndEnabledSwipe(imageViews: [UIImageView]) {
+        for imageview in imageViews {
+            // if imageView.image is nil, the buttons are not hidden and readyToShare is 'false'
+            guard imageview.image != nil else {
+                hideButtons(buttons: [pickImageButtonL1,pickImageButtonL2,pickImageButtonR1,pickImageButtonR2], value: false)
+                changeValueReadyToShare(value: false)
+                return
             }
         }
+        // if imageView.image in imageViews is not nil, buttons is hidden, readyToShare is 'true' and active swipe
+        hideButtons(buttons: [pickImageButtonL1,pickImageButtonL2,pickImageButtonR1,pickImageButtonR2], value: true)
+        changeValueReadyToShare(value: true)
+        checkReadyToShareForEnabledSwipe()
     }
-    
     // hide buttons for create context graphic
-    func hideButton(yes: Bool) {
-        if yes == true {
-            pickImageButtonL1.isHidden = true
-            pickImageButtonL2.isHidden = true
-            pickImageButtonR1.isHidden = true
-            pickImageButtonR2.isHidden = true
-            readyToShare = true
-        } else {
-            pickImageButtonL1.isHidden = false
-            pickImageButtonL2.isHidden = false
-            pickImageButtonR1.isHidden = false
-            pickImageButtonR2.isHidden = false
-            readyToShare = false
+    func hideButtons(buttons: [UIButton], value: Bool) {
+        for button in buttons {
+            button.isHidden = value
         }
     }
-    
-    // checks that the image is ready to share to activate the swipe that corresponds to the orientation
-    func checkReadyToShareForEnabledSwipe() {
-        if readyToShare {
-            initSwipeGesture()
-        } else {
-            self.view.removeGestureRecognizer(swipeUp)
-            self.view.removeGestureRecognizer(swipeLeft)
-        }
+    func changeValueReadyToShare(value: Bool) {
+        readyToShare = value
     }
     
     // ====================================
-    // MARK: Swipe Gesture Settings
+    // MARK:-  Swipe Gesture Settings
     // ====================================
     
     // allows you to configure the swipe and add or remove it to the view
@@ -290,7 +268,15 @@ class ViewController: UIViewController {
             self.view.addGestureRecognizer(swipeLeft)
         }
     }
-    
+    // checks that the image is ready to share to activate the swipe that corresponds to the orientation
+    func checkReadyToShareForEnabledSwipe() {
+        if readyToShare {
+            initSwipeGesture()
+        } else {
+            self.view.removeGestureRecognizer(swipeUp)
+            self.view.removeGestureRecognizer(swipeLeft)
+        }
+    }
     // detects each time the device changes orientation
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
@@ -351,14 +337,20 @@ class ViewController: UIViewController {
     }
     // allows you to reset the interface elements
     func reset() {
-        imageViewL1.image = nil
-        imageViewL2.image = nil
-        imageViewR1.image = nil
-        imageViewR2.image = nil
-        hideButton(yes: false)
+        deleteImageFromImageViews(imageViews: [imageViewL1,imageViewL2,imageViewR1,imageViewR2])
+        hideButtons(buttons: [pickImageButtonL1,pickImageButtonL2,pickImageButtonR1,pickImageButtonR2], value: false)
         imageToShare = nil
         readyToShare = false
     }
+    // allows you delete they images from imageViews
+    func deleteImageFromImageViews(imageViews: [UIImageView]) {
+        for imageView in imageViews {
+            imageView.image = nil
+        }
+    }
+    // ====================================
+    // MARK: - Animations
+    // ====================================
     // method that animates the apparition of an image by enlarging it
     func animateImageView(imageView: UIImageView) {
         UIView.animate(withDuration: 0.0, animations: {
@@ -390,16 +382,10 @@ class ViewController: UIViewController {
         }
     }
 }
-
-    // ====================================
-    // MARK: - Extension
-    // ====================================
-
+    // ===============================================
+    // MARK: - Import Image from Album device
+    // ===============================================
 extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
-    // ====================================
-    // MARK: Import Image for Album
-    // ====================================
     
     // method that configures the image picker controller and presents it
     func pickImage() {
@@ -413,36 +399,38 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
     // recover the image to assign it to the corresponding view image according to the button that is selected
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if pickImageButtonL1.isSelected == true {
-            imageViewL1.image = info[UIImagePickerControllerOriginalImage] as? UIImage
-            animateImageView(imageView: imageViewL1)
-            pickImageButtonL1.isSelected = false
+            updateImageView(button: pickImageButtonL1, imageView: imageViewL1, info: info)
         }
         if pickImageButtonL2.isSelected == true {
-            imageViewL2.image = info[UIImagePickerControllerOriginalImage] as? UIImage
-            animateImageView(imageView: imageViewL2)
-            pickImageButtonL2.isSelected = false
+            updateImageView(button: pickImageButtonL2, imageView: imageViewL2, info: info)
         }
         if pickImageButtonR1.isSelected == true {
-            imageViewR1.image = info[UIImagePickerControllerOriginalImage] as? UIImage
-            animateImageView(imageView: imageViewR1)
-            pickImageButtonR1.isSelected = false
+            updateImageView(button: pickImageButtonR1, imageView: imageViewR1, info: info)
         }
        if pickImageButtonR2.isSelected == true {
-            self.imageViewR2.image = info[UIImagePickerControllerOriginalImage] as? UIImage
-        animateImageView(imageView: imageViewR2)
-            pickImageButtonR2.isSelected = false
+            updateImageView(button: pickImageButtonR2, imageView: imageViewR2, info: info)
         }
-        checkImagePickedIsComplete(layoutStyle: currentLayout)
+        CheckLayoutStyleCompletedForhideButtonAndEnabledSwipe(layoutStyle: currentLayout)
+        // only layout is completed
         animateView(view: squareViewMiddle)
         self.dismiss(animated: true, completion: nil)
     }
-    
+    // allows you to display the image imported by the user on the clicked button
+    func updateImageView(button: UIButton, imageView: UIImageView, info: [String : Any]) {
+        imageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        animateImageView(imageView: imageView)
+        button.isSelected = false
+    }
     // method used to cancel the choice of the image
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        pickImageButtonL1.isSelected = false
-        pickImageButtonL2.isSelected = false
-        pickImageButtonR1.isSelected = false
-        pickImageButtonR2.isSelected = false
+        //we set the buttons.isSelected value to 'false'
+        buttonIsSelected(buttons: [pickImageButtonL1,pickImageButtonL2,pickImageButtonR1,pickImageButtonR2], value: false)
         self.dismiss(animated: true, completion: nil)
+    }
+    // method used to give a value to several buttons
+    func buttonIsSelected(buttons: [UIButton], value: Bool) {
+        for button in buttons {
+            button.isSelected = value
+        }
     }
 }
