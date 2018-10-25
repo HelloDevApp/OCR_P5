@@ -11,7 +11,7 @@ import UIKit
 //--------------------------------------------------
 // MARK: - Enumeration
 //-------------------------------------------------
-
+// contains the different styles of displaying elements in the application
 enum Layout {
     case rectangularBottomView
     case rectangularTopView
@@ -71,9 +71,10 @@ class ViewController: UIViewController {
     //-------------------------------------------------
     // MARK: - Instances
     //-------------------------------------------------
-    
+    // creation of a gesture
     let swipeUp = UISwipeGestureRecognizer()
     let swipeLeft = UISwipeGestureRecognizer()
+    // creation of the controller that will configure the way to import images
     var imagePickerController = UIImagePickerController()
     
     //-------------------------------------------------
@@ -246,6 +247,7 @@ class ViewController: UIViewController {
             button.isHidden = value
         }
     }
+    // change the value of the readyToShare property
     func changeValueReadyToShare(value: Bool) {
         readyToShare = value
     }
@@ -311,6 +313,7 @@ class ViewController: UIViewController {
     func createImageToShare() {
         UIGraphicsBeginImageContext(squareViewMiddle.frame.size)
         squareViewMiddle.layer.render(in: UIGraphicsGetCurrentContext()!)
+        // property that contains the graphic context (image to share)
         let viewImage = UIGraphicsGetImageFromCurrentImageContext()
         imageToShare = viewImage
         UIGraphicsEndImageContext()
