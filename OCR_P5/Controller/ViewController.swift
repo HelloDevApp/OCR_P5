@@ -117,8 +117,8 @@ class ViewController: UIViewController {
     }
     // check if images picked is completed for hide buttons, active swipe (if images picked is completed) and display new layout style
     func updateLayoutAndAnimateIfCOmpleted(layoutStyle: Layout, buttonImageSelected: UIButton, buttonsImageNil: [UIButton]) {
-        // ***hide button andenabled Swipe*** only if images Picked of layout is completed
-        CheckLayoutStyleCompletedForhideButtonAndEnabledSwipe(layoutStyle: layoutStyle)
+        // ***hide button and enabled Swipe*** only if images Picked of layout is completed
+        checkLayoutStyle(layoutStyle: layoutStyle)
         displaysLayout(layoutStyle: layoutStyle)
         buttonImageSelected.setImage(#imageLiteral(resourceName: "Selected"), for: .normal)
         for button in buttonsImageNil {
@@ -209,24 +209,24 @@ class ViewController: UIViewController {
         }
     }
     
-    // checks that all pictures have been imported
-    func CheckLayoutStyleCompletedForhideButtonAndEnabledSwipe(layoutStyle: Layout) {
+    // checks that the imageViews of a layout contain an image for enabled swipe and hide buttons
+    func checkLayoutStyle(layoutStyle: Layout) {
 
         switch layoutStyle {
             
         case .rectangularBottomView:
             // checks if the chosen layout is complete according to the parameters
-            checkIfHideButtonsAndEnabledSwipe(imageViews: [imageViewL1, imageViewL2, imageViewR1])
+            updateElementsIfLayoutIsComplete(imageViews: [imageViewL1, imageViewL2, imageViewR1])
         case .rectangularTopView:
             // checks if the chosen layout is complete according to the parameters
-            checkIfHideButtonsAndEnabledSwipe(imageViews: [imageViewL1, imageViewL2, imageViewR2])
+           updateElementsIfLayoutIsComplete(imageViews: [imageViewL1, imageViewL2, imageViewR2])
         case .squareView:
             // checks if the chosen layout is complete according to the parameters
-            checkIfHideButtonsAndEnabledSwipe(imageViews: [imageViewL1, imageViewL2, imageViewR1, imageViewR2])
+            updateElementsIfLayoutIsComplete(imageViews: [imageViewL1, imageViewL2, imageViewR1, imageViewR2])
         }
     }
-    // hideButtons, enableSwipe and modify value of ReadyToShare (if completed layout import images)
-    func checkIfHideButtonsAndEnabledSwipe(imageViews: [UIImageView]) {
+    // elements: hideButtons, enableSwipe and modify value of ReadyToShare (if completed layout import images)
+    func updateElementsIfLayoutIsComplete(imageViews: [UIImageView]) {
         for imageview in imageViews {
             // if imageView.image is nil, the buttons are not hidden and readyToShare is 'false'
             guard imageview.image != nil else {
@@ -410,7 +410,7 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
        if pickImageButtonR2.isSelected == true {
             updateImageView(button: pickImageButtonR2, imageView: imageViewR2, info: info)
         }
-        CheckLayoutStyleCompletedForhideButtonAndEnabledSwipe(layoutStyle: currentLayout)
+        checkLayoutStyle(layoutStyle: currentLayout)
         // only layout is completed
         animateView(view: squareViewMiddle)
         self.dismiss(animated: true, completion: nil)
