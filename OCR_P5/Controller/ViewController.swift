@@ -261,11 +261,11 @@ class ViewController: UIViewController {
         swipeUp.direction = .up
         swipeLeft.direction = .left
         if UIDevice.current.orientation == .portrait {
-            swipeUp.addTarget(self, action: #selector(swipeUpAction))
+            swipeUp.addTarget(self, action: #selector(swipeAction))
             self.view.removeGestureRecognizer(swipeLeft)
             self.view.addGestureRecognizer(swipeUp)
         } else {
-            swipeLeft.addTarget(self, action: #selector(swipeLeftAction))
+            swipeLeft.addTarget(self, action: #selector(swipeAction))
             self.view.removeGestureRecognizer(swipeUp)
             self.view.addGestureRecognizer(swipeLeft)
         }
@@ -288,19 +288,12 @@ class ViewController: UIViewController {
     // ====================================
     // MARK: - Swipe Gesture Action
     // ====================================
-    // method to call during a swipe up
-    @objc func swipeUpAction() {
+    // method to call during a swipe (left or up)
+    @objc func swipeAction() {
         guard readyToShare else {
             return
         }
-        createImageToShare()
-        shareImage()
-    }
-    //method to call during a swipe left
-    @objc func swipeLeftAction() {
-        guard readyToShare else {
-            return
-        }
+        animateWhenSwipping(view: squareViewMiddle, resetIdentity: false)
         createImageToShare()
         shareImage()
     }
@@ -333,6 +326,9 @@ class ViewController: UIViewController {
             (activity, success, items, error) in
             if success {
             self.reset()
+                self.animateWhenSwipping(view: self.squareViewMiddle, resetIdentity: true)
+            } else {
+                self.animateWhenSwipping(view: self.squareViewMiddle, resetIdentity: true)
             }
         }
         self.present(activityViewController, animated: true, completion: nil)
@@ -382,6 +378,26 @@ class ViewController: UIViewController {
             UIView.animate(withDuration: 0.25, delay: 1.15, options: .curveLinear, animations: {
                 view.transform = CGAffineTransform.identity
             })
+        }
+    }
+    // method called when a swipe is detected and that animates the view
+    func animateWhenSwipping(view: UIView, resetIdentity: Bool) {
+        if UIDevice.current.orientation == .portrait {
+            UIView.animate(withDuration: 0.6) {
+                if resetIdentity {
+                    view.transform = CGAffineTransform.identity
+                } else {
+                    view.transform = CGAffineTransform(translationX: 0.0, y: -600.0)
+                }
+            }
+        } else {
+            UIView.animate(withDuration: 0.6) {
+                if resetIdentity {
+                    view.transform = CGAffineTransform.identity
+                } else {
+                    view.transform = CGAffineTransform(translationX: -600.0, y: 0.0)
+                }
+            }
         }
     }
 }
