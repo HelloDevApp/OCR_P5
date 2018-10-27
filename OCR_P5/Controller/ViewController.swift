@@ -387,7 +387,7 @@ class ViewController: UIViewController {
                 if resetIdentity {
                     view.transform = CGAffineTransform.identity
                 } else {
-                    view.transform = CGAffineTransform(translationX: 0.0, y: -600.0)
+                    view.transform = CGAffineTransform(translationX: 0.0, y: -700.0)
                 }
             }
         } else {
@@ -395,7 +395,7 @@ class ViewController: UIViewController {
                 if resetIdentity {
                     view.transform = CGAffineTransform.identity
                 } else {
-                    view.transform = CGAffineTransform(translationX: -600.0, y: 0.0)
+                    view.transform = CGAffineTransform(translationX: -700.0, y: 0.0)
                 }
             }
         }
